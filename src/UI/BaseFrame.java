@@ -1,18 +1,22 @@
 package UI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.*;
 
 
-public class BaseFrame extends JFrame {
+public class BaseFrame extends JFrame implements MouseListener{
     private JPanel pnlLeftSide;
     private JPanel pnlRightSide;
     private JPanel pnlLogoContainer;
     private JLabel lblLogo;
     private JPanel pnlSettings;
     private JPanel pnlLogin;
+    private JButton btnSettings;
+    private JButton btnSignIn;
 
 
     public BaseFrame(){
@@ -76,7 +80,7 @@ public class BaseFrame extends JFrame {
             //Selecting the image of the Settings button
             ImageIcon imgSettings = new ImageIcon("src/Resources/settings.png");
 
-            JButton btnSettings = new JButton("General Settings");
+            btnSettings = new JButton("General Settings");
             btnSettings.setFont(new Font("Roboto", Font.PLAIN,20)); //changing Font settings of the button.
 
             btnSettings.setForeground(Color.white); //changing the button's text color to white.
@@ -89,30 +93,15 @@ public class BaseFrame extends JFrame {
 
             btnSettings.setHorizontalAlignment(JButton.LEFT); //aligning the content of the label to the left.
 
-            //Remove Button Border
+            //Remove Settings Button original border
             btnSettings.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
             btnSettings.setBackground(new Color(0xFFFFFF));
             btnSettings.setContentAreaFilled(false);
 
+            //Add new border with radius of 10
             btnSettings.setBorder(new RoundedBorder(10));
-            btnSettings.addChangeListener(new ChangeListener()
-            {
-                public void stateChanged(ChangeEvent e)
-                {
-                    ButtonModel model = btnSettings.getModel();
-                    if (model.isPressed())
-                    {
-                        btnSettings.setForeground(Color.gray);
-                        btnSettings.setIcon(new ImageIcon("src/Resources/graySettings.png"));
-                    }
-                    else
-                    {
-                        btnSettings.setForeground(Color.white);
-                        btnSettings.setIcon(new ImageIcon("src/Resources/settings.png"));
-                    }
-                }
-            });
 
+            btnSettings.addMouseListener(this);
         //Add button to the Settings panel which is in the bottom of the sidebar
         pnlSettings.add(btnSettings);
 
@@ -165,10 +154,22 @@ public class BaseFrame extends JFrame {
 
         JTextField txtUserName = new JTextField();
         txtUserName.setPreferredSize(new Dimension(750,50));
-        txtUserName.setForeground(new Color(0x000000));
-        txtUserName.setFont(new Font("Arial", Font.PLAIN, 20));
+        txtUserName.setForeground(new Color(0x60FF22));
+        txtUserName.setFont(new Font("Arial", Font.PLAIN, 24));
+        txtUserName.setBackground(new Color(0x2B2E31));
+
+        txtUserName.setBorder(BorderFactory.createEmptyBorder());
+        txtUserName.setBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.white));
+
+        txtUserName.setCaretColor(new Color(0x60FF22));
+
+
+//        txtUserName.setContentAreaFilled(false);
+
+
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
+
 
 
 
@@ -179,14 +180,24 @@ public class BaseFrame extends JFrame {
 
 
 
+
         JLabel lblPassword = new JLabel("Password");
         lblPassword.setForeground(new Color(0xFFFFFF));
-        lblPassword.setFont(new Font("Arial", Font.PLAIN, 20));
+        lblPassword.setFont(new Font("Arial", Font.PLAIN, 24));
 
         JTextField txtPassword = new JTextField();
         txtPassword.setPreferredSize(new Dimension(750,50));
-        txtPassword.setForeground(new Color(0x000000));
+        txtPassword.setForeground(new Color(0x60FF22));
         txtPassword.setFont(new Font("Arial", Font.PLAIN, 20));
+        txtPassword.setBackground(new Color(0x2B2E31));
+
+        txtPassword.setBorder(BorderFactory.createEmptyBorder());
+        txtPassword.setBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.white));
+
+        txtPassword.setCaretColor(new Color(0x60FF22));
+
+
+
         pnlPassword.add(lblPassword);
         pnlPassword.add(txtPassword);
 
@@ -206,14 +217,24 @@ public class BaseFrame extends JFrame {
         pnlSignIn.setOpaque(false);
         pnlSignIn.setPreferredSize(new Dimension(750,100));
 
-        JButton btnSignIn = new JButton("Sign in");
+        btnSignIn = new JButton("Sign in");
         btnSignIn.setForeground(new Color(0xFFFFFF));
         btnSignIn.setPreferredSize(new Dimension(400,40));
         btnSignIn.setFocusable(false);
         btnSignIn.setFont(new Font("Arial", Font.PLAIN,24));
         btnSignIn.setContentAreaFilled(false);
         btnSignIn.setBorder(new RoundedBorder(15));
+        btnSignIn.addMouseListener(this);
 
+//        btnSignIn.addChangeListener(new ChangeListener()
+//        {
+//            public void stateChanged(ChangeEvent e) {
+//                ButtonModel model = btnSignIn.getModel();
+//
+//                if (model.isPressed()) { btnSignIn.setForeground(Color.gray); }
+//                else { btnSignIn.setForeground(Color.white); }
+//            }
+//        });
 
 
 
@@ -260,5 +281,52 @@ public class BaseFrame extends JFrame {
     }
 
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+//                btnSettings.setForeground(new Color(0x9BFF74));
+    }
 
+    @Override
+    public void mousePressed(MouseEvent e) {
+        JButton source = (JButton)e.getSource();
+        if (btnSettings == source){
+            btnSettings.setForeground(new Color(0x60FF22));
+            btnSettings.setIcon(new ImageIcon("src/Resources/greenSettings.png"));
+        } else if (btnSignIn == source) {
+            btnSignIn.setForeground(new Color(0x60FF22));
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        JButton source = (JButton)e.getSource();
+        if (btnSettings == source){
+            btnSettings.setForeground(new Color(0xC9FFB4));
+            btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
+        } else if (btnSignIn == source) {
+            btnSignIn.setForeground(new Color(0xC9FFB4));
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        JButton source = (JButton)e.getSource();
+        if (btnSettings == source){
+            btnSettings.setForeground(new Color(0xC9FFB4));
+            btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
+        } else if (btnSignIn == source) {
+            btnSignIn.setForeground(new Color(0xC9FFB4));
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        JButton source = (JButton)e.getSource();
+        if (btnSettings == source){
+            btnSettings.setForeground(new Color(0xFFFFFF));
+            btnSettings.setIcon(new ImageIcon("src/Resources/settings.png"));
+        } else if (btnSignIn == source) {
+            btnSignIn.setForeground(new Color(0xFFFFFF));
+        }
+    }
 }

@@ -17,6 +17,7 @@ public class BaseFrame extends JFrame implements MouseListener{
     private JPanel pnlLogin;
     private JButton btnSettings;
     private JButton btnSignIn;
+    private JCheckBox cbKeeSignIn;
 
 
     public BaseFrame(){
@@ -164,9 +165,6 @@ public class BaseFrame extends JFrame implements MouseListener{
         txtUserName.setCaretColor(new Color(0x60FF22));
 
 
-//        txtUserName.setContentAreaFilled(false);
-
-
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
 
@@ -177,8 +175,6 @@ public class BaseFrame extends JFrame implements MouseListener{
         JPanel pnlPassword = new JPanel(new FlowLayout(FlowLayout.LEADING));
         pnlPassword.setOpaque(false);
         pnlPassword.setPreferredSize(new Dimension(750,100));
-
-
 
 
         JLabel lblPassword = new JLabel("Password");
@@ -206,7 +202,7 @@ public class BaseFrame extends JFrame implements MouseListener{
         pnlKeepSignin.setOpaque(false);
         pnlKeepSignin.setPreferredSize(new Dimension(750,30));
 
-        JCheckBox cbKeeSignIn = new JCheckBox("Keep me signed in");
+        cbKeeSignIn = new JCheckBox("Keep me signed in");
         cbKeeSignIn.setFocusable(false);
         cbKeeSignIn.setFont(new Font("Arial", Font.PLAIN,16));
         cbKeeSignIn.setForeground(new Color(0xFFFFFF));
@@ -280,6 +276,8 @@ public class BaseFrame extends JFrame implements MouseListener{
         return pnlLogin;
     }
 
+    private JButton source;
+    private JCheckBox cbSource;
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -288,45 +286,58 @@ public class BaseFrame extends JFrame implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        JButton source = (JButton)e.getSource();
+        source = (JButton)e.getSource();
+        cbSource = (JCheckBox)e.getSource();
         if (btnSettings == source){
             btnSettings.setForeground(new Color(0x60FF22));
             btnSettings.setIcon(new ImageIcon("src/Resources/greenSettings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0x60FF22));
+        } else if (cbKeeSignIn == cbSource) {
+
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        JButton source = (JButton)e.getSource();
+        source = (JButton)e.getSource();
+        cbSource = (JCheckBox)e.getSource();
         if (btnSettings == source){
             btnSettings.setForeground(new Color(0xC9FFB4));
             btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0xC9FFB4));
+        } else if (cbKeeSignIn == cbSource) {
+
         }
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        JButton source = (JButton)e.getSource();
+        source = (JButton)e.getSource();
+        cbSource = (JCheckBox)e.getSource();
         if (btnSettings == source){
             btnSettings.setForeground(new Color(0xC9FFB4));
             btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0xC9FFB4));
+        } else if (cbKeeSignIn == cbSource) {
+
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        JButton source = (JButton)e.getSource();
+        source = (JButton)e.getSource();
+        cbSource = (JCheckBox)e.getSource();
         if (btnSettings == source){
             btnSettings.setForeground(new Color(0xFFFFFF));
             btnSettings.setIcon(new ImageIcon("src/Resources/settings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0xFFFFFF));
+        } else if (cbKeeSignIn == cbSource) {
+
         }
     }
 }

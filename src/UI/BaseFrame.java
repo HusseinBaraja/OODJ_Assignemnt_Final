@@ -11,8 +11,6 @@ import java.awt.event.*;
 public class BaseFrame extends JFrame implements MouseListener{
     private JPanel pnlLeftSide;
     private JPanel pnlRightSide;
-    private JPanel pnlLogoContainer;
-    private JLabel lblLogo;
     private JPanel pnlSettings;
     private JPanel pnlLogin;
     private JButton btnSettings;
@@ -28,13 +26,13 @@ public class BaseFrame extends JFrame implements MouseListener{
         this.setLocationRelativeTo(null);
 
 
+        setPnlLeftSide();
         this.add(getPnlLeftSide(), BorderLayout.WEST);
         this.add(getPnlRightSide(), BorderLayout.CENTER);
         this.setVisible(true);
     }
 
-
-    public JPanel getPnlLeftSide(){
+    public void setPnlLeftSide(){
         pnlLeftSide = new JPanel();
         pnlLeftSide.setBackground(new Color(0x1E2022));
         pnlLeftSide.setPreferredSize(new Dimension(400,720));
@@ -42,30 +40,14 @@ public class BaseFrame extends JFrame implements MouseListener{
         pnlLeftSide.setBorder(BorderFactory.createMatteBorder(0,0,0,1,Color.white));
 
 
+
         pnlLeftSide.add(getPnlSettings(), BorderLayout.SOUTH);
-        pnlLeftSide.add(getPnlLogoContainer(), BorderLayout.CENTER);
+        this.add(getPnlLeftSide(), BorderLayout.WEST);
+    }
+    public JPanel getPnlLeftSide(){
         return pnlLeftSide;
     }
-    public JPanel getPnlLogoContainer(){
-        pnlLogoContainer = new JPanel();
-        pnlLogoContainer.setBackground(new Color(0x1E2022));
-        pnlLogoContainer.setLayout(new BorderLayout());
-        //logoContainer.setBounds(0,0,200,200);
 
-        ImageIcon logoIcon = new ImageIcon("src/Resources/Dumbbell.png");
-        lblLogo = new JLabel("<html><center>APU Gym Centre<br>Management System</html>");
-        lblLogo.setForeground(new Color(0xFFFFFF));
-        lblLogo.setFont(new Font("Bernard MT Condensed", Font.PLAIN,32));
-
-        lblLogo.setIcon(logoIcon);
-        lblLogo.setHorizontalAlignment(JLabel.CENTER);
-        lblLogo.setVerticalAlignment(JLabel.CENTER);
-        lblLogo.setHorizontalTextPosition(JLabel.CENTER);
-        lblLogo.setVerticalTextPosition(JLabel.BOTTOM);
-        pnlLogoContainer.add(lblLogo, BorderLayout.CENTER);
-
-        return pnlLogoContainer;
-    }
     public JPanel getPnlSettings(){
         //Creating the Settings panel
         pnlSettings = new JPanel();
@@ -293,9 +275,10 @@ public class BaseFrame extends JFrame implements MouseListener{
             btnSettings.setIcon(new ImageIcon("src/Resources/greenSettings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0x60FF22));
-        } else if (cbKeeSignIn == cbSource) {
-
         }
+//        else if (cbKeeSignIn == cbSource) {
+//
+//        }
     }
 
     @Override
@@ -307,9 +290,10 @@ public class BaseFrame extends JFrame implements MouseListener{
             btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0xC9FFB4));
-        } else if (cbKeeSignIn == cbSource) {
-
         }
+//        else if (cbKeeSignIn == cbSource) {
+//
+//        }
 
     }
 
@@ -322,9 +306,10 @@ public class BaseFrame extends JFrame implements MouseListener{
             btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0xC9FFB4));
-        } else if (cbKeeSignIn == cbSource) {
-
         }
+//        else if (cbKeeSignIn == cbSource) {
+//
+//        }
     }
 
     @Override
@@ -336,8 +321,9 @@ public class BaseFrame extends JFrame implements MouseListener{
             btnSettings.setIcon(new ImageIcon("src/Resources/settings.png"));
         } else if (btnSignIn == source) {
             btnSignIn.setForeground(new Color(0xFFFFFF));
-        } else if (cbKeeSignIn == cbSource) {
-
         }
+//        else if (cbKeeSignIn == cbSource) {
+//
+//        }
     }
 }

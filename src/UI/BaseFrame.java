@@ -20,6 +20,7 @@ public class BaseFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1280,720);
         this.setResizable(true);
+        this.setLocationRelativeTo(null);
 
 
         this.add(getPnlLeftSide(), BorderLayout.WEST);
@@ -130,20 +131,15 @@ public class BaseFrame extends JFrame {
     public JPanel getPnlLogin(){
         pnlLogin = new JPanel();
         pnlLogin.setLayout(new GridBagLayout());
-        pnlLogin.setBackground(new Color(0x2B2E31));
+        pnlLogin.setOpaque(false);
 
-        GridBagConstraints GBCLogin = new GridBagConstraints();
-        GBCLogin.weightx = 0;
-        GBCLogin.weighty = 0;
-        GBCLogin.fill= GridBagConstraints.HORIZONTAL;
+
 
 
         JPanel pnlTitle = new JPanel();
-        pnlTitle.setBackground(new Color(0x2B2E31));
+        pnlTitle.setOpaque(false);
         pnlTitle.setPreferredSize(new Dimension(200,100));
-        GBCLogin.gridx = 0;
-        GBCLogin.gridy = 0;
-        GBCLogin.gridwidth = 2;
+
 
         JLabel lblTitle = new JLabel("Login");
         lblTitle.setForeground(new Color(0xFFFFFF));
@@ -152,16 +148,14 @@ public class BaseFrame extends JFrame {
         lblTitle.setVerticalAlignment(JLabel.CENTER);
         pnlTitle.add(lblTitle);
 
-        pnlLogin.add(pnlTitle, GBCLogin);
+
 
 
 
         JPanel pnlUserName = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        pnlUserName.setBackground(new Color(0x2B2E31));
+        pnlUserName.setOpaque(false);
         pnlUserName.setPreferredSize(new Dimension(750,100));
-        GBCLogin.gridx = 0;
-        GBCLogin.gridy = 1;
-        GBCLogin.gridwidth = 3;
+
 
         JLabel lblUserName = new JLabel("Username or Email Address");
         lblUserName.setForeground(new Color(0xFFFFFF));
@@ -171,20 +165,18 @@ public class BaseFrame extends JFrame {
 
         JTextField txtUserName = new JTextField();
         txtUserName.setPreferredSize(new Dimension(750,50));
-        txtUserName.setForeground(new Color(0xFFFFFF));
+        txtUserName.setForeground(new Color(0x000000));
         txtUserName.setFont(new Font("Arial", Font.PLAIN, 20));
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
 
-        pnlLogin.add(pnlUserName, GBCLogin);
+
 
 
         JPanel pnlPassword = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        pnlPassword.setBackground(new Color(0x2B2E31));
+        pnlPassword.setOpaque(false);
         pnlPassword.setPreferredSize(new Dimension(750,100));
-        GBCLogin.gridx = 0;
-        GBCLogin.gridy = 2;
-        GBCLogin.gridwidth = 3;
+
 
 
         JLabel lblPassword = new JLabel("Password");
@@ -193,15 +185,76 @@ public class BaseFrame extends JFrame {
 
         JTextField txtPassword = new JTextField();
         txtPassword.setPreferredSize(new Dimension(750,50));
-        txtPassword.setForeground(new Color(0xFFFFFF));
+        txtPassword.setForeground(new Color(0x000000));
         txtPassword.setFont(new Font("Arial", Font.PLAIN, 20));
-        pnlPassword.add(lblUserName);
-        pnlPassword.add(txtUserName);
+        pnlPassword.add(lblPassword);
+        pnlPassword.add(txtPassword);
 
+
+        JPanel pnlKeepSignin = new JPanel(new FlowLayout(FlowLayout.LEADING));
+        pnlKeepSignin.setOpaque(false);
+        pnlKeepSignin.setPreferredSize(new Dimension(750,30));
+
+        JCheckBox cbKeeSignIn = new JCheckBox("Keep me signed in");
+        cbKeeSignIn.setFocusable(false);
+        cbKeeSignIn.setFont(new Font("Arial", Font.PLAIN,16));
+        cbKeeSignIn.setForeground(new Color(0xFFFFFF));
+        cbKeeSignIn.setOpaque(false);
+        pnlKeepSignin.add(cbKeeSignIn);
+
+        JPanel pnlSignIn = new JPanel();
+        pnlSignIn.setOpaque(false);
+        pnlSignIn.setPreferredSize(new Dimension(750,100));
+
+        JButton btnSignIn = new JButton("Sign in");
+        btnSignIn.setForeground(new Color(0xFFFFFF));
+        btnSignIn.setPreferredSize(new Dimension(400,40));
+        btnSignIn.setFocusable(false);
+        btnSignIn.setFont(new Font("Arial", Font.PLAIN,24));
+        btnSignIn.setContentAreaFilled(false);
+        btnSignIn.setBorder(new RoundedBorder(15));
+
+
+
+
+        pnlSignIn.add(btnSignIn);
+
+
+
+
+
+        GridBagConstraints GBCLogin = new GridBagConstraints();
+
+        GBCLogin.weightx = 0;
+        GBCLogin.weighty = 0;
+        GBCLogin.fill= GridBagConstraints.BOTH;
+
+
+        GBCLogin.gridx = 0;
+        GBCLogin.gridy = 0;
+//        GBCLogin.gridwidth = 2;
+        pnlLogin.add(pnlTitle, GBCLogin);
+
+
+        GBCLogin.gridx = 0;
+        GBCLogin.gridy = 2;
+//        GBCLogin.gridwidth = 3;
+        pnlLogin.add(pnlUserName, GBCLogin);
+
+        GBCLogin.gridx = 0;
+        GBCLogin.gridy = 4;
+//        GBCLogin.gridwidth = 3;
         pnlLogin.add(pnlPassword, GBCLogin);
 
+        GBCLogin.gridx = 0;
+        GBCLogin.gridy = 5;
+//        GBCLogin.gridwidth = 3;
+        pnlLogin.add(pnlKeepSignin, GBCLogin);
 
-
+        GBCLogin.gridx = 0;
+        GBCLogin.gridy = 6;
+//        GBCLogin.gridwidth = 3;
+        pnlLogin.add(pnlSignIn, GBCLogin);
 
         return pnlLogin;
     }

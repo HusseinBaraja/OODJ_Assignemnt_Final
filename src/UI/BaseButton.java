@@ -10,21 +10,21 @@ public class BaseButton extends JButton implements MouseListener {
     private String lightFileName;
     private String darkFileName;
     private boolean hasImage;
-    public BaseButton(String text, int rgb, int width, int height, int fontSize){
+    public BaseButton(String text, int fontSize, int rgb, int width, int height){
         setText(text);
-        setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing Font settings of the button.
+        setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
         setForeground(new Color(rgb)); //changing the button's text color.
 
         setPreferredSize(new Dimension(width,height)); //Changing the size of the button.
-        setFocusable(false); //removing the annoying focus highlight around the button.
+        setFocusable(false); //removing the annoying focus highlight around the button. (pre-set template)
 
         //Remove the button's original border
-        setBorder(BorderFactory.createEmptyBorder());
-//        setBackground(new Color(0xFFFFFF));
-        setContentAreaFilled(false);
+        setBorder(BorderFactory.createEmptyBorder()); //(pre-set template)
+        setContentAreaFilled(false); //(pre-set template)
 
-        setBorder(new RoundedBorder(15)); //Add new border radius.
+        setBorder(new RoundedBorder(15)); //Add new border radius. (pre-set template)
 
+        //Adding a mouse listener change the button's behaviour depending on the mouse status above the button.
         addMouseListener(this);
     }
 
@@ -43,10 +43,6 @@ public class BaseButton extends JButton implements MouseListener {
     public String getDarkFileName(){
         return this.darkFileName;
     }
-
-
-
-
 
 
     @Override

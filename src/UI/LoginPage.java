@@ -2,17 +2,12 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class LoginPage extends BaseFrame implements MouseListener {
+public class LoginPage extends BaseFrame {
     private JPanel pnlLogoContainer;
     private JPanel pnlSettings;
-    private JButton btnSettings;
     private JPanel pnlLogin;
-    private JButton btnSignIn;
     private JCheckBox cbKeepSignIn;
-
     public LoginPage(){
         setPnlLeftSide();
         setPnlRightSide();
@@ -31,7 +26,7 @@ public class LoginPage extends BaseFrame implements MouseListener {
     public void setPnlLogoContainer(){
         //Creating the Logo Container panel
         pnlLogoContainer = new JPanel();
-        pnlLogoContainer.setBackground(new Color(0x1E2022));
+        pnlLogoContainer.setOpaque(false);
         pnlLogoContainer.setLayout(new BorderLayout());
 
         //Importing the Logo image
@@ -58,7 +53,7 @@ public class LoginPage extends BaseFrame implements MouseListener {
         //Creating the Settings panel
         pnlSettings = new JPanel();
         pnlSettings.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pnlSettings.setBackground((new Color(0x1E2022)));
+        pnlSettings.setOpaque(false);
         pnlSettings.setPreferredSize(new Dimension(400,100));
 
         //Creating a top white divider
@@ -66,31 +61,17 @@ public class LoginPage extends BaseFrame implements MouseListener {
 
 
         //Creating the Settings button:
-        //Selecting the image of the Settings button
+        //Selecting the image of the settings button from the project resources.
         ImageIcon imgSettings = new ImageIcon("src/Resources/settings.png");
 
-        btnSettings = new JButton("General Settings");
-        btnSettings.setFont(new Font("Roboto", Font.PLAIN,20)); //changing Font settings of the button.
-
-        btnSettings.setForeground(Color.white); //changing the button's text color to white.
-
-        btnSettings.setPreferredSize(new Dimension(300,35)); //Changing the size of the button.
-
-        btnSettings.setFocusable(false); //removing the annoying focus highlight around the button.
-
+        BaseButton btnSettings = new BaseButton("General Settings", 20, 0xFFFFFF, 300, 35);
         btnSettings.setIcon(imgSettings); //Adding the selected image to show in the button.
-
         btnSettings.setHorizontalAlignment(JButton.LEFT); //aligning the content of the label to the left.
 
-        //Remove Settings Button original border
-        btnSettings.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
-        btnSettings.setBackground(new Color(0xFFFFFF));
-        btnSettings.setContentAreaFilled(false);
+        btnSettings.setImageOnEvent("src/Resources/settings.png",
+                                    "src/Resources/lightGreenSettings.png",
+                                    "src/Resources/greenSettings.png");
 
-        //Add new border with radius of 10
-        btnSettings.setBorder(new RoundedBorder(10));
-
-        btnSettings.addMouseListener(this);
         //Add button to the Settings panel which is in the bottom of the sidebar
         pnlSettings.add(btnSettings);
     }
@@ -121,6 +102,7 @@ public class LoginPage extends BaseFrame implements MouseListener {
         lblTitle.setFont(new Font("Arial", Font.PLAIN, 64));
         lblTitle.setHorizontalAlignment(JLabel.CENTER);
         lblTitle.setVerticalAlignment(JLabel.CENTER);
+        lblTitle.requestFocusInWindow(); //To move the Focus from the text field at the start of the program.
         pnlTitle.add(lblTitle);
 
 
@@ -133,16 +115,7 @@ public class LoginPage extends BaseFrame implements MouseListener {
         lblUserName.setForeground(new Color(0xFFFFFF));
         lblUserName.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        JTextField txtUserName = new JTextField();
-        txtUserName.setPreferredSize(new Dimension(750,50));
-        txtUserName.setForeground(new Color(0x60FF22));
-        txtUserName.setFont(new Font("Arial", Font.PLAIN, 24));
-        txtUserName.setBackground(new Color(0x2B2E31));
-
-        txtUserName.setBorder(BorderFactory.createEmptyBorder());
-        txtUserName.setBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.white));
-
-        txtUserName.setCaretColor(new Color(0x60FF22));
+        BaseTextField txtUserName = new BaseTextField("Enter your Username or Email here", 24, 750,50);
 
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
@@ -157,16 +130,7 @@ public class LoginPage extends BaseFrame implements MouseListener {
         lblPassword.setForeground(new Color(0xFFFFFF));
         lblPassword.setFont(new Font("Arial", Font.PLAIN, 24));
 
-        JTextField txtPassword = new JTextField();
-        txtPassword.setPreferredSize(new Dimension(750,50));
-        txtPassword.setForeground(new Color(0x60FF22));
-        txtPassword.setFont(new Font("Arial", Font.PLAIN, 20));
-        txtPassword.setBackground(new Color(0x2B2E31));
-
-        txtPassword.setBorder(BorderFactory.createEmptyBorder());
-        txtPassword.setBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.white));
-
-        txtPassword.setCaretColor(new Color(0x60FF22));
+        BasePasswordField txtPassword = new BasePasswordField(24, 750,50);
 
         pnlPassword.add(lblPassword);
         pnlPassword.add(txtPassword);
@@ -189,18 +153,10 @@ public class LoginPage extends BaseFrame implements MouseListener {
         pnlSignIn.setOpaque(false);
         pnlSignIn.setPreferredSize(new Dimension(750,100));
 
-        btnSignIn = new JButton("Sign in");
-        btnSignIn.setForeground(new Color(0xFFFFFF));
-        btnSignIn.setPreferredSize(new Dimension(400,40));
-        btnSignIn.setFocusable(false);
-        btnSignIn.setFont(new Font("Arial", Font.PLAIN,24));
-        btnSignIn.setContentAreaFilled(false);
-        btnSignIn.setBorder(new RoundedBorder(15));
-        btnSignIn.addMouseListener(this);
-
-        pnlSignIn.add(btnSignIn);
-
-        /*
+        //Creating the Settings button:
+        BaseButton btnSignIn = new BaseButton("Sign in", 24, 0xFFFFFF, 400, 40);
+        pnlSignIn.add(btnSignIn); //Adding the sign-in button to the sign-in panel which is in the bottom of the right side of the frame.
+        /* How to add change listener
         btnSignIn.addChangeListener(new ChangeListener()
         {
             public void stateChanged(ChangeEvent e) {
@@ -211,7 +167,6 @@ public class LoginPage extends BaseFrame implements MouseListener {
             }
         });
         */
-
 
 
         GridBagConstraints GBCLogin = new GridBagConstraints();
@@ -250,76 +205,4 @@ public class LoginPage extends BaseFrame implements MouseListener {
         return pnlLogin;
     }
 
-
-
-
-
-    private JButton source;
-    private JCheckBox cbSource;
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-//                btnSettings.setForeground(new Color(0x9BFF74));
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        source = (JButton)e.getSource();
-        cbSource = (JCheckBox)e.getSource();
-        if (btnSettings == source){
-            btnSettings.setForeground(new Color(0x60FF22));
-            btnSettings.setIcon(new ImageIcon("src/Resources/greenSettings.png"));
-        } else if (btnSignIn == source) {
-            btnSignIn.setForeground(new Color(0x60FF22));
-        }
-//        else if (cbKeeSignIn == cbSource) {
-//
-//        }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        source = (JButton)e.getSource();
-        cbSource = (JCheckBox)e.getSource();
-        if (btnSettings == source){
-            btnSettings.setForeground(new Color(0xC9FFB4));
-            btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
-        } else if (btnSignIn == source) {
-            btnSignIn.setForeground(new Color(0xC9FFB4));
-        }
-//        else if (cbKeeSignIn == cbSource) {
-//
-//        }
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        source = (JButton)e.getSource();
-        cbSource = (JCheckBox)e.getSource();
-        if (btnSettings == source){
-            btnSettings.setForeground(new Color(0xC9FFB4));
-            btnSettings.setIcon(new ImageIcon("src/Resources/lightGreenSettings.png"));
-        } else if (btnSignIn == source) {
-            btnSignIn.setForeground(new Color(0xC9FFB4));
-        }
-//        else if (cbKeeSignIn == cbSource) {
-//
-//        }
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        source = (JButton)e.getSource();
-        cbSource = (JCheckBox)e.getSource();
-        if (btnSettings == source){
-            btnSettings.setForeground(new Color(0xFFFFFF));
-            btnSettings.setIcon(new ImageIcon("src/Resources/settings.png"));
-        } else if (btnSignIn == source) {
-            btnSignIn.setForeground(new Color(0xFFFFFF));
-        }
-//        else if (cbKeeSignIn == cbSource) {
-//
-//        }
-    }
 }

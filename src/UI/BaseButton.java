@@ -10,10 +10,10 @@ public class BaseButton extends JButton implements MouseListener {
     private String lightFileName;
     private String darkFileName;
     private boolean hasImage;
-    public BaseButton(String text, int fontSize, int rgb, int width, int height){
+    public BaseButton(String text, int fontSize, int fontColor, int width, int height){
         setText(text);
         setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
-        setForeground(new Color(rgb)); //changing the button's text color.
+        setForeground(new Color(fontColor)); //changing the button's text color.
 
         setPreferredSize(new Dimension(width,height)); //Changing the size of the button.
         setFocusable(false); //removing the annoying focus highlight around the button. (pre-set template)
@@ -44,6 +44,14 @@ public class BaseButton extends JButton implements MouseListener {
         return this.darkFileName;
     }
 
+
+    public void setImage(String filename){
+        //Importing the image
+        ImageIcon logoIcon = new ImageIcon(filename);
+
+        //setting the image inside the button
+        setIcon(logoIcon);
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {

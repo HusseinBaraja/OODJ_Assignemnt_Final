@@ -4,14 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginPage extends BaseFrame {
-    private JPanel pnlLogoContainer;
-    private JPanel pnlSettings;
-    private JPanel pnlLogin;
-    private JCheckBox cbKeepSignIn;
+    private BasePanel pnlLogoContainer;
+//    private JPanel pnlSettings;
+    private BasePanel pnlLogin;
+
     public LoginPage(){
-        setPnlLeftSide();
-        setPnlRightSide();
-        this.setVisible(true);
+        this.setTitle("Login");
     }
 
     @Override
@@ -19,66 +17,30 @@ public class LoginPage extends BaseFrame {
         super.setPnlLeftSide();
         setPnlLogoContainer();
         this.getPnlLeftSide().add(getPnlLogoContainer(), BorderLayout.CENTER);
-        setPnlSettings();
-        this.getPnlLeftSide().add(getPnlSettings(), BorderLayout.SOUTH);
     }
 
     public void setPnlLogoContainer(){
         //Creating the Logo Container panel
-        pnlLogoContainer = new JPanel();
-        pnlLogoContainer.setOpaque(false);
+        pnlLogoContainer = new BasePanel(false);
         pnlLogoContainer.setLayout(new BorderLayout());
 
-        //Importing the Logo image
-        ImageIcon logoIcon = new ImageIcon("src/Resources/Dumbbell.png");
+        //Creating the Label that Contains Both the Logo and the Logo image. By using HTML the label can go to the next line.
+        BaseLabel lblLogo = new BaseLabel("<html><center>APU Gym Centre<br>Management System</html>",
+                                            32,"Bernard MT Condensed",0xFFFFFF);
 
-        //Creating the Label that Contains Both the Logo and the Logo image
-        JLabel lblLogo = new JLabel("<html><center>APU Gym Centre<br>Management System</html>");//Using HTML to be able to go to the next line
-        lblLogo.setForeground(new Color(0xFFFFFF));
-        lblLogo.setFont(new Font("Bernard MT Condensed", Font.PLAIN,32));
+        lblLogo.setImage("src/Resources/Dumbbell.png"); //setting the logo image inside the label.
 
-        lblLogo.setIcon(logoIcon);//setting the logo inside the Logo label
-        lblLogo.setHorizontalAlignment(JLabel.CENTER);//Centring the Logo label horizontally inside the logo container panel
-        lblLogo.setVerticalAlignment(JLabel.CENTER);//Centring the Logo label vertically inside the logo container panel
-        lblLogo.setHorizontalTextPosition(JLabel.CENTER);//positioning the name of the company in the center of the logo label
-        lblLogo.setVerticalTextPosition(JLabel.BOTTOM);//positioning the name of the company at the bottom of the logo in the logo label
-        pnlLogoContainer.add(lblLogo, BorderLayout.CENTER);//Adding the logo label to the logo container panel
+        //Centring the Logo label horizontally and vertically inside the logo container panel.
+        lblLogo.setAlignment(JLabel.CENTER, JLabel.CENTER);
+
+        //positioning the name of the company in the center bottom of the logo label
+        lblLogo.setTextPosition(JLabel.CENTER,JLabel.BOTTOM);
+
+        pnlLogoContainer.add(lblLogo, BorderLayout.CENTER); //Adding the logo label to the logo container panel
     }
     public JPanel getPnlLogoContainer(){
         return pnlLogoContainer;
     }
-
-
-    public void setPnlSettings(){
-        //Creating the Settings panel
-        pnlSettings = new JPanel();
-        pnlSettings.setLayout(new FlowLayout(FlowLayout.LEFT));
-        pnlSettings.setOpaque(false);
-        pnlSettings.setPreferredSize(new Dimension(400,100));
-
-        //Creating a top white divider
-        pnlSettings.setBorder(BorderFactory.createMatteBorder(1,0,0,0,Color.white));
-
-
-        //Creating the Settings button:
-        //Selecting the image of the settings button from the project resources.
-        ImageIcon imgSettings = new ImageIcon("src/Resources/settings.png");
-
-        BaseButton btnSettings = new BaseButton("General Settings", 20, 0xFFFFFF, 300, 35);
-        btnSettings.setIcon(imgSettings); //Adding the selected image to show in the button.
-        btnSettings.setHorizontalAlignment(JButton.LEFT); //aligning the content of the label to the left.
-
-        btnSettings.setImageOnEvent("src/Resources/settings.png",
-                                    "src/Resources/lightGreenSettings.png",
-                                    "src/Resources/greenSettings.png");
-
-        //Add button to the Settings panel which is in the bottom of the sidebar
-        pnlSettings.add(btnSettings);
-    }
-    public JPanel getPnlSettings(){
-        return pnlSettings;
-    }
-
 
     @Override
     public void setPnlRightSide(){
@@ -88,33 +50,30 @@ public class LoginPage extends BaseFrame {
     }
 
     public void setPnlLogin(){
-        pnlLogin = new JPanel();
+        pnlLogin = new BasePanel(false);
         pnlLogin.setLayout(new GridBagLayout());
-        pnlLogin.setOpaque(false);
 
 
-        JPanel pnlTitle = new JPanel();
-        pnlTitle.setOpaque(false);
-        pnlTitle.setPreferredSize(new Dimension(200,100));
+        BasePanel pnlTitle = new BasePanel(false, 200, 100);
 
-        JLabel lblTitle = new JLabel("Login");
-        lblTitle.setForeground(new Color(0xFFFFFF));
-        lblTitle.setFont(new Font("Arial", Font.PLAIN, 64));
-        lblTitle.setHorizontalAlignment(JLabel.CENTER);
-        lblTitle.setVerticalAlignment(JLabel.CENTER);
-        lblTitle.requestFocusInWindow(); //To move the Focus from the text field at the start of the program.
-        pnlTitle.add(lblTitle);
+        //Creating the label for the page title.
+        BaseLabel lblTitle = new BaseLabel("Login", 64, "Arial", 0xFFFFFF);
+
+        //Centring the title label horizontally and vertically inside title panel.
+        lblTitle.setAlignment(JLabel.CENTER, JLabel.CENTER);
+
+//        lblTitle.requestFocusInWindow(); //To move the Focus from the text field at the start of the program.
+        pnlTitle.add(lblTitle); //Adding the title label to the title panel
 
 
 
-        JPanel pnlUserName = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        pnlUserName.setOpaque(false);
-        pnlUserName.setPreferredSize(new Dimension(750,100));
+        BasePanel pnlUserName = new BasePanel(false,750,100);
+        pnlUserName.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        JLabel lblUserName = new JLabel("Username or Email Address");
-        lblUserName.setForeground(new Color(0xFFFFFF));
-        lblUserName.setFont(new Font("Arial", Font.PLAIN, 20));
+        //Creating the label for the Username field.
+        BaseLabel lblUserName = new BaseLabel("Username or Email Address", 24, "Arial", 0xFFFFFF);
 
+        //Creating the text field for the Username.
         BaseTextField txtUserName = new BaseTextField("Enter your Username or Email here", 24, 750,50);
 
         pnlUserName.add(lblUserName);
@@ -122,13 +81,10 @@ public class LoginPage extends BaseFrame {
 
 
 
-        JPanel pnlPassword = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        pnlPassword.setOpaque(false);
-        pnlPassword.setPreferredSize(new Dimension(750,100));
+        BasePanel pnlPassword = new BasePanel(false,750,100);
+        pnlPassword.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        JLabel lblPassword = new JLabel("Password");
-        lblPassword.setForeground(new Color(0xFFFFFF));
-        lblPassword.setFont(new Font("Arial", Font.PLAIN, 24));
+        BaseLabel lblPassword = new BaseLabel("Password", 24, "Arial", 0xFFFFFF);
 
         BasePasswordField txtPassword = new BasePasswordField(24, 750,50);
 
@@ -137,21 +93,15 @@ public class LoginPage extends BaseFrame {
 
 
 
-        JPanel pnlKeepSignin = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        pnlKeepSignin.setOpaque(false);
-        pnlKeepSignin.setPreferredSize(new Dimension(750,30));
+        BasePanel pnlKeepSignin = new BasePanel(false, 750, 30);
+        pnlKeepSignin.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        cbKeepSignIn = new JCheckBox("Keep me signed in");
-        cbKeepSignIn.setFocusable(false);
-        cbKeepSignIn.setFont(new Font("Arial", Font.PLAIN,16));
-        cbKeepSignIn.setForeground(new Color(0xFFFFFF));
-        cbKeepSignIn.setOpaque(false);
+        BaseCheckBox cbKeepSignIn = new BaseCheckBox("Keep me signed in", 16, 0xFFFFFF);
+
         pnlKeepSignin.add(cbKeepSignIn);
 
 
-        JPanel pnlSignIn = new JPanel();
-        pnlSignIn.setOpaque(false);
-        pnlSignIn.setPreferredSize(new Dimension(750,100));
+        BasePanel pnlSignIn = new BasePanel(false, 750, 100);
 
         //Creating the Settings button:
         BaseButton btnSignIn = new BaseButton("Sign in", 24, 0xFFFFFF, 400, 40);
@@ -169,6 +119,13 @@ public class LoginPage extends BaseFrame {
         */
 
 
+        BasePanel[] loginPanels = new BasePanel[5];
+        loginPanels[0] = pnlTitle;
+        loginPanels[1] = pnlUserName;
+        loginPanels[2] = pnlPassword;
+        loginPanels[3] = pnlKeepSignin;
+        loginPanels[4] = pnlSignIn;
+
         GridBagConstraints GBCLogin = new GridBagConstraints();
 
         GBCLogin.weightx = 0;
@@ -176,30 +133,37 @@ public class LoginPage extends BaseFrame {
         GBCLogin.fill= GridBagConstraints.BOTH;
 
 
+        for(int i = 0; i < loginPanels.length; i++){
+            GBCLogin.gridx = 0;
+            GBCLogin.gridy = i;
+            pnlLogin.add(loginPanels[i], GBCLogin);
+        }
+        /*
         GBCLogin.gridx = 0;
         GBCLogin.gridy = 0;
 //        GBCLogin.gridwidth = 2;
         pnlLogin.add(pnlTitle, GBCLogin);
 
         GBCLogin.gridx = 0;
-        GBCLogin.gridy = 2;
+        GBCLogin.gridy = 1;
 //        GBCLogin.gridwidth = 3;
         pnlLogin.add(pnlUserName, GBCLogin);
 
         GBCLogin.gridx = 0;
-        GBCLogin.gridy = 4;
+        GBCLogin.gridy = 2;
 //        GBCLogin.gridwidth = 3;
         pnlLogin.add(pnlPassword, GBCLogin);
 
         GBCLogin.gridx = 0;
-        GBCLogin.gridy = 5;
+        GBCLogin.gridy = 3;
 //        GBCLogin.gridwidth = 3;
         pnlLogin.add(pnlKeepSignin, GBCLogin);
 
         GBCLogin.gridx = 0;
-        GBCLogin.gridy = 6;
+        GBCLogin.gridy = 4;
 //        GBCLogin.gridwidth = 3;
         pnlLogin.add(pnlSignIn, GBCLogin);
+         */
     }
     public JPanel getPnlLogin(){
         return pnlLogin;

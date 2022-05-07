@@ -28,11 +28,4 @@ public class BaseTextField extends JTextField {
             }
         });
     }
-    public void removeText(){
-
-
-    }
-
-
-
 }

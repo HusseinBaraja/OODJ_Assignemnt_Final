@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BaseLabel extends JLabel {
+    public BaseLabel() {
+    }
     public BaseLabel(String text, int fontSize, String fontName, int fontColor) {
         setText(text);
         setFont(new Font(fontName, Font.PLAIN, fontSize)); //changing font settings of the button.

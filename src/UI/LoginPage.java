@@ -15,6 +15,7 @@ public class LoginPage extends BaseFrame {
     @Override
     public void setPnlLeftSide(){
         super.setPnlLeftSide();
+        super.getPnlLeftSide().setPreferredSize(new Dimension(400, 720));
         setPnlLogoContainer();
         this.getPnlLeftSide().add(getPnlLogoContainer(), BorderLayout.CENTER);
     }
@@ -28,7 +29,7 @@ public class LoginPage extends BaseFrame {
         BaseLabel lblLogo = new BaseLabel("<html><center>APU Gym Centre<br>Management System</html>",
                                             32,"Bernard MT Condensed",0xFFFFFF);
 
-        lblLogo.setImage("src/Resources/Dumbbell.png"); //setting the logo image inside the label.
+        lblLogo.setImage("src/Resources/logo.png"); //setting the logo image inside the label.
 
         //Centring the Logo label horizontally and vertically inside the logo container panel.
         lblLogo.setAlignment(JLabel.CENTER, JLabel.CENTER);
@@ -93,12 +94,12 @@ public class LoginPage extends BaseFrame {
 
 
 
-        BasePanel pnlKeepSignin = new BasePanel(false, 750, 30);
-        pnlKeepSignin.setLayout(new FlowLayout(FlowLayout.LEADING));
+        BasePanel pnlKeepSignIn = new BasePanel(false, 750, 40);
+        pnlKeepSignIn.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseCheckBox cbKeepSignIn = new BaseCheckBox("Keep me signed in", 16, 0xFFFFFF);
+        BaseCheckBox cbKeepSignIn = new BaseCheckBox("Keep me signed in", 18, 0xFFFFFF);
 
-        pnlKeepSignin.add(cbKeepSignIn);
+        pnlKeepSignIn.add(cbKeepSignIn);
 
 
         BasePanel pnlSignIn = new BasePanel(false, 750, 100);
@@ -106,6 +107,10 @@ public class LoginPage extends BaseFrame {
         //Creating the Settings button:
         BaseButton btnSignIn = new BaseButton("Sign in", 24, 0xFFFFFF, 400, 40);
         pnlSignIn.add(btnSignIn); //Adding the sign-in button to the sign-in panel which is in the bottom of the right side of the frame.
+
+
+
+
         /* How to add change listener
         btnSignIn.addChangeListener(new ChangeListener()
         {
@@ -123,7 +128,7 @@ public class LoginPage extends BaseFrame {
         loginPanels[0] = pnlTitle;
         loginPanels[1] = pnlUserName;
         loginPanels[2] = pnlPassword;
-        loginPanels[3] = pnlKeepSignin;
+        loginPanels[3] = pnlKeepSignIn;
         loginPanels[4] = pnlSignIn;
 
         GridBagConstraints GBCLogin = new GridBagConstraints();
@@ -133,12 +138,12 @@ public class LoginPage extends BaseFrame {
         GBCLogin.fill= GridBagConstraints.BOTH;
 
 
-        for(int i = 0; i < loginPanels.length; i++){
+        for(int rows = 0; rows < loginPanels.length; rows++){
             GBCLogin.gridx = 0;
-            GBCLogin.gridy = i;
-            pnlLogin.add(loginPanels[i], GBCLogin);
+            GBCLogin.gridy = rows;
+            pnlLogin.add(loginPanels[rows], GBCLogin);
         }
-        /*
+        /* GridBag Layout use
         GBCLogin.gridx = 0;
         GBCLogin.gridy = 0;
 //        GBCLogin.gridwidth = 2;
@@ -157,7 +162,7 @@ public class LoginPage extends BaseFrame {
         GBCLogin.gridx = 0;
         GBCLogin.gridy = 3;
 //        GBCLogin.gridwidth = 3;
-        pnlLogin.add(pnlKeepSignin, GBCLogin);
+        pnlLogin.add(pnlKeepSignIn, GBCLogin);
 
         GBCLogin.gridx = 0;
         GBCLogin.gridy = 4;

@@ -2,9 +2,6 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class BasePasswordField extends JPasswordField {
     public BasePasswordField(int fontSize, int width, int height) {
         setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the password field.

@@ -1,7 +1,9 @@
+import UI.BaseDashboard;
 import UI.BaseFrame;
-import UI.LoginPage;
+import UI.BaseMangerDashboard;
+
 public class Main {
     public static void main(String[] args){
-        new LoginPage();
+        new BaseMangerDashboard();
     }
 }

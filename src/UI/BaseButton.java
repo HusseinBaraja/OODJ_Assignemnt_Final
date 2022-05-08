@@ -2,20 +2,25 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BaseButton extends JButton implements MouseListener {
+public class BaseButton extends JButton implements MouseListener, ActionListener {
     private String baseFileName;
     private String lightFileName;
     private String darkFileName;
     private boolean hasImage;
+    private String frameName;
+//    private String previousFrame;
     public BaseButton(String text, int fontSize, int fontColor, int width, int height){
         setText(text);
         setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
         setForeground(new Color(fontColor)); //changing the button's text color.
 
         setPreferredSize(new Dimension(width,height)); //Changing the size of the button.
+        setIconTextGap(20);
         setFocusable(false); //removing the annoying focus highlight around the button. (pre-set template)
 
         //Remove the button's original border
@@ -24,9 +29,41 @@ public class BaseButton extends JButton implements MouseListener {
 
         setBorder(new RoundedBorder(15)); //Add new border radius. (pre-set template)
 
+        addActionListener(this);
         //Adding a mouse listener change the button's behaviour depending on the mouse status above the button.
         addMouseListener(this);
     }
+    public void setImage(String filename){
+        //Importing the image
+        ImageIcon logoIcon = new ImageIcon(filename);
+
+        //setting the image inside the button
+        setIcon(logoIcon);
+    }
+    public void setFrameOnClick(String frameName){
+        this.frameName = frameName;
+    }
+
+//    public void setPreviousFrame(String previousFrame){
+//        this.previousFrame = previousFrame;
+//    }
+//    public String getPreviousFrame(){
+//        return previousFrame;
+//    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (frameName) {
+            case "ManagerRegistration":
+                if(e.getSource()==this){
+                    ManagerRegistration managerRegistration = new ManagerRegistration();
+                }
+            case "ManagerBookSession":
+                if(e.getSource()==this){
+                    ManagerBookSession managerBookSession = new ManagerBookSession();
+                }
+        }
+    }
+
 
     public void setImageOnEvent(String baseFileName, String lightFileName, String darkFileName){
         hasImage = true;
@@ -42,15 +79,6 @@ public class BaseButton extends JButton implements MouseListener {
     }
     public String getDarkFileName(){
         return this.darkFileName;
-    }
-
-
-    public void setImage(String filename){
-        //Importing the image
-        ImageIcon logoIcon = new ImageIcon(filename);
-
-        //setting the image inside the button
-        setIcon(logoIcon);
     }
 
     @Override
@@ -89,4 +117,6 @@ public class BaseButton extends JButton implements MouseListener {
             this.setIcon(new ImageIcon(getBaseFileName()));
         }
     }
+
+
 }

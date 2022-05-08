@@ -1,9 +1,7 @@
-import UI.BaseDashboard;
-import UI.BaseFrame;
-import UI.BaseMangerDashboard;
+import UI.BaseManagerDashboard;
 
 public class Main {
     public static void main(String[] args){
-        new BaseMangerDashboard();
+        new BaseManagerDashboard();
     }
 }

@@ -24,7 +24,7 @@ public class BaseFrame extends JFrame{
 
     public void setPnlLeftSide(){
 
-        pnlLeftSide = new BasePanel(0x1E2022,260,720);
+        pnlLeftSide = new BasePanel(0x1E2022,290,720);
         pnlLeftSide.setLayout(new BorderLayout());
         pnlLeftSide.setBorder(BorderFactory.createMatteBorder(0,0,0,1,new Color(0xFFFFFF)));
 
@@ -40,7 +40,7 @@ public class BaseFrame extends JFrame{
 
     public void setPnlSettings(){
         //Creating the Settings panel
-        pnlSettings = new BasePanel(false,250,100);
+        pnlSettings = new BasePanel(false,280,100);
         pnlSettings.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         //Creating a top white divider
@@ -48,7 +48,7 @@ public class BaseFrame extends JFrame{
 
 
         //Creating the Settings button:
-        BaseButton btnSettings = new BaseButton("General Settings", 20, 0xFFFFFF, 250, 40);
+        BaseButton btnSettings = new BaseButton("General Settings", 20, 0xFFFFFF, 280, 40);
         btnSettings.setImage("src/Resources/Settings/settings.png");
         btnSettings.setHorizontalAlignment(JButton.LEFT); //aligning the content of the label to the left.
 

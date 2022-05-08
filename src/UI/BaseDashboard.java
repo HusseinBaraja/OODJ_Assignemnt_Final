@@ -42,15 +42,18 @@ public class BaseDashboard extends BaseFrame{
     }
 
     public void setPnlDashboard() {
-        pnlDashboard = new BasePanel(false,250,50);
-        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
+        pnlDashboard = new BasePanel(false,280,50);
+//        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseLabel lblDashboard = new BaseLabel("Dashboard", 20, "Arial", 0xFFFFFF);
-        lblDashboard.setImage("src/Resources/Dashboard/baseDashboard.png");
-        lblDashboard.setAlignment(JLabel.LEFT, JLabel.CENTER);
+        BaseButton btnDashboard = new BaseButton("Dashboard", 20, 0xFFFFFF, 280, 40);
+        btnDashboard.setImage("src/Resources/Dashboard/baseDashboard.png");
+        btnDashboard.setHorizontalAlignment(JButton.LEFT);
 
+        btnDashboard.setImageOnEvent("src/Resources/Dashboard/baseDashboard.png",
+                                     "src/Resources/Dashboard/lightDashboard.png",
+                                     "src/Resources/Dashboard/darkDashboard.png");
 
-        pnlDashboard.add(lblDashboard);
+        pnlDashboard.add(btnDashboard);
     }
     public BasePanel getPnlDashboard(){
         return pnlDashboard;

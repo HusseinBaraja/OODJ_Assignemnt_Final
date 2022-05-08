@@ -1,5 +1,7 @@
 package UI;
 
+import UI.BaseComponents.*;
+
 import javax.swing.*;
 import java.awt.*;
 

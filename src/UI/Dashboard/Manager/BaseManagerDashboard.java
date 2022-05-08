@@ -1,6 +1,12 @@
-package UI;
+package UI.Dashboard.Manager;
+
+import UI.BaseComponents.BaseButton;
+import UI.BaseComponents.BasePanel;
+import UI.Dashboard.BaseDashboard;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BaseManagerDashboard extends BaseDashboard {
     private BasePanel pnlUserRegistration;
@@ -16,15 +22,9 @@ public class BaseManagerDashboard extends BaseDashboard {
     public void setPnlTopSideBar(){
         super.setPnlTopSideBar();
         setPnlUserRegistration();
-        PnlTopSideBar.add(getPnlUserRegistration());
+        getPnlTopSideBar().add(getPnlUserRegistration());
         setPnlBookSession();
-        PnlTopSideBar.add(getPnlBookSession());
-    }
-//    public void setCurrentFrame(){
-//        this.currentFrame = "BaseManagerDashboard";
-//    }
-    public void hideCurrentFrame(){
-        super.dispose();
+        getPnlTopSideBar().add(getPnlBookSession());
     }
 
     public void setPnlUserRegistration() {
@@ -40,15 +40,19 @@ public class BaseManagerDashboard extends BaseDashboard {
                                             "src/Resources/Manager/UserRegistration/lightUserRegistration.png",
                                             "src/Resources/Manager/UserRegistration/darkUserRegistration.png");
 
-
-        btnUserRegistration.setFrameOnClick("ManagerRegistration");
+        btnUserRegistration.setFrameName("ManagerRegistration");
+        btnUserRegistration.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BaseManagerDashboard.this.dispose();
+            }
+        });
         
         pnlUserRegistration.add(btnUserRegistration);
     }
     public BasePanel getPnlUserRegistration(){
         return pnlUserRegistration;
     }
-
 
     public void setPnlBookSession() {
         pnlBookSession = new BasePanel(false,280,50);
@@ -64,11 +68,19 @@ public class BaseManagerDashboard extends BaseDashboard {
                                        "src/Resources/Manager/BookSession/darkBookSession.png");
 
 
-        btnBookSession.setFrameOnClick("ManagerBookSession");
+        btnBookSession.setFrameName("ManagerBookSession");
 
+        btnBookSession.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BaseManagerDashboard.this.dispose();
+            }
+        });
         pnlBookSession.add(btnBookSession);
     }
     public BasePanel getPnlBookSession(){
         return pnlBookSession;
     }
+
+
 }

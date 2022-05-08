@@ -1,4 +1,4 @@
-package UI;
+package UI.BaseComponents;
 
 import java.awt.*;
 import javax.swing.border.Border;

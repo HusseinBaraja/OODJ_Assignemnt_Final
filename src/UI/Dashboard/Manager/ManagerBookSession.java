@@ -1,4 +1,7 @@
-package UI;
+package UI.Dashboard.Manager;
+
+import UI.BaseComponents.BaseLabel;
+import UI.Dashboard.Manager.BaseManagerDashboard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +12,6 @@ public class ManagerBookSession extends BaseManagerDashboard implements ActionLi
     private BaseLabel lblTest2;
     public ManagerBookSession(){
         setTitle("Manager Book training session");
-//        hideCurrentFrame();
     }
     public void setPnlRightSide(){
         super.setPnlRightSide();

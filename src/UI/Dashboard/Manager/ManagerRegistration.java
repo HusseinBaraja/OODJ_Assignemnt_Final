@@ -1,4 +1,7 @@
-package UI;
+package UI.Dashboard.Manager;
+
+import UI.BaseComponents.BaseLabel;
+import UI.Dashboard.Manager.BaseManagerDashboard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +10,6 @@ public class ManagerRegistration extends BaseManagerDashboard {
     private BaseLabel lblTest1;
     public ManagerRegistration(){
         setTitle("Manager Registration");
-//        hideCurrentFrame();
     }
     public void setPnlRightSide(){
         super.setPnlRightSide();

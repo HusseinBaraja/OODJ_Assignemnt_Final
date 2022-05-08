@@ -1,4 +1,8 @@
-package UI;
+package UI.BaseComponents;
+
+import UI.Dashboard.Manager.ManagerBookSession;
+import UI.Dashboard.Manager.ManagerDashboard;
+import UI.Dashboard.Manager.ManagerRegistration;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +17,6 @@ public class BaseButton extends JButton implements MouseListener, ActionListener
     private String darkFileName;
     private boolean hasImage;
     private String frameName;
-//    private String previousFrame;
     public BaseButton(String text, int fontSize, int fontColor, int width, int height){
         setText(text);
         setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
@@ -40,27 +43,33 @@ public class BaseButton extends JButton implements MouseListener, ActionListener
         //setting the image inside the button
         setIcon(logoIcon);
     }
-    public void setFrameOnClick(String frameName){
+
+    //make it a list somehow;
+    public void setFrameName(String frameName){
         this.frameName = frameName;
     }
+    public String getFrameName(){
+        return frameName;
+    }
 
-//    public void setPreviousFrame(String previousFrame){
-//        this.previousFrame = previousFrame;
-//    }
-//    public String getPreviousFrame(){
-//        return previousFrame;
-//    }
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (frameName) {
+        switch (getFrameName()) {
+            case "ManagerDashboard":
+                if (e.getSource() == this) {
+                    new ManagerDashboard();
+                }
+                break;
             case "ManagerRegistration":
-                if(e.getSource()==this){
-                    ManagerRegistration managerRegistration = new ManagerRegistration();
+                if (e.getSource() == this) {
+                    new ManagerRegistration();
                 }
+                break;
             case "ManagerBookSession":
-                if(e.getSource()==this){
-                    ManagerBookSession managerBookSession = new ManagerBookSession();
+                if (e.getSource() == this) {
+                    new ManagerBookSession();
                 }
+                break;
         }
     }
 

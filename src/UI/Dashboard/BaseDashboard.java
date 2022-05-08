@@ -1,12 +1,20 @@
-package UI;
+package UI.Dashboard;
+
+import UI.BaseComponents.BaseButton;
+import UI.BaseComponents.BaseLabel;
+import UI.BaseComponents.BasePanel;
+import UI.BaseFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class BaseDashboard extends BaseFrame{
-    public BasePanel PnlTopSideBar;
-    public BasePanel pnlLogo;
-    public BasePanel pnlDashboard;
+public class BaseDashboard extends BaseFrame {
+    private BasePanel PnlTopSideBar;
+    private BasePanel pnlLogo;
+    private BasePanel pnlDashboard;
+    private BaseButton btnDashboard;
 
     public BaseDashboard(){
         setTitle("Base Dashboard Template");
@@ -45,7 +53,7 @@ public class BaseDashboard extends BaseFrame{
         pnlDashboard = new BasePanel(false,280,50);
 //        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseButton btnDashboard = new BaseButton("Dashboard", 20, 0xFFFFFF, 280, 40);
+        btnDashboard = new BaseButton("Dashboard", 20, 0xFFFFFF, 280, 40);
         btnDashboard.setImage("src/Resources/Dashboard/baseDashboard.png");
         btnDashboard.setHorizontalAlignment(JButton.LEFT);
 
@@ -53,10 +61,23 @@ public class BaseDashboard extends BaseFrame{
                                      "src/Resources/Dashboard/lightDashboard.png",
                                      "src/Resources/Dashboard/darkDashboard.png");
 
+        btnDashboard.setFrameName("ManagerDashboard");
+
+        btnDashboard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BaseDashboard.this.dispose();
+            }
+        });
+
         pnlDashboard.add(btnDashboard);
     }
     public BasePanel getPnlDashboard(){
         return pnlDashboard;
+    }
+
+    public BaseButton getBtnDashboard(){
+        return btnDashboard;
     }
 
 

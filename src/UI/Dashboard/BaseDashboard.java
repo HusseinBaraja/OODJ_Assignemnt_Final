@@ -15,6 +15,7 @@ public class BaseDashboard extends BaseFrame {
     private BasePanel pnlLogo;
     private BasePanel pnlDashboard;
     private BaseButton btnDashboard;
+    String something;
 
     public BaseDashboard(){
         setTitle("Base Dashboard Template");
@@ -41,7 +42,7 @@ public class BaseDashboard extends BaseFrame {
 //        pnlLogo.setBorder(BorderFactory.createMatteBorder(0,0,1,0,new Color(0xFFFFFF)));
 
         BaseLabel lblLogo = new BaseLabel();
-        lblLogo.setImage("src/Resources/logo.png");
+        lblLogo.setImage("src/Resources/Logo.png");
 
         pnlLogo.add(lblLogo);
     }
@@ -61,7 +62,9 @@ public class BaseDashboard extends BaseFrame {
                                      "src/Resources/Dashboard/lightDashboard.png",
                                      "src/Resources/Dashboard/darkDashboard.png");
 
-        btnDashboard.setFrameName("ManagerDashboard");
+
+        getSomething("ManagerDashboard");
+        btnDashboard.setFrameName(something);
 
         btnDashboard.addActionListener(new ActionListener() {
             @Override
@@ -71,6 +74,10 @@ public class BaseDashboard extends BaseFrame {
         });
 
         pnlDashboard.add(btnDashboard);
+    }
+    public String getSomething(String something){
+        this.something = something;
+        return this.something;
     }
     public BasePanel getPnlDashboard(){
         return pnlDashboard;

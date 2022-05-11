@@ -17,7 +17,7 @@ public class BaseFrame extends JFrame{
         this.setResizable(true);
         this.setLocationRelativeTo(null);
 
-        ImageIcon logo = new ImageIcon("src/Resources/logo.png");
+        ImageIcon logo = new ImageIcon("src/Resources/Logo.png");
         this.setIconImage(logo.getImage());
 
         setPnlLeftSide();

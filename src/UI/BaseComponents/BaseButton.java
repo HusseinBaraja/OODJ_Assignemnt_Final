@@ -1,17 +1,11 @@
 package UI.BaseComponents;
 
-import UI.Dashboard.Manager.ManagerBookSession;
-import UI.Dashboard.Manager.ManagerDashboard;
-import UI.Dashboard.Manager.ManagerRegistration;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BaseButton extends JButton implements MouseListener, ActionListener {
+public class BaseButton extends JButton implements MouseListener {
     private String baseFileName;
     private String lightFileName;
     private String darkFileName;
@@ -32,7 +26,7 @@ public class BaseButton extends JButton implements MouseListener, ActionListener
 
         setBorder(new RoundedBorder(15)); //Add new border radius. (pre-set template)
 
-        addActionListener(this);
+//        addActionListener(this);
         //Adding a mouse listener change the button's behaviour depending on the mouse status above the button.
         addMouseListener(this);
     }
@@ -52,26 +46,26 @@ public class BaseButton extends JButton implements MouseListener, ActionListener
         return frameName;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        switch (getFrameName()) {
-            case "ManagerDashboard":
-                if (e.getSource() == this) {
-                    new ManagerDashboard();
-                }
-                break;
-            case "ManagerRegistration":
-                if (e.getSource() == this) {
-                    new ManagerRegistration();
-                }
-                break;
-            case "ManagerBookSession":
-                if (e.getSource() == this) {
-                    new ManagerBookSession();
-                }
-                break;
-        }
-    }
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        switch (getFrameName()) {
+//            case "ManagerDashboard":
+//                if (e.getSource() == this) {
+//                    new ManagerDashboard();
+//                }
+//                break;
+//            case "ManagerRegistration":
+//                if (e.getSource() == this) {
+//                    new ManagerRegistration();
+//                }
+//                break;
+//            case "ManagerBookSession":
+//                if (e.getSource() == this) {
+//                    new ManagerBookSession();
+//                }
+//                break;
+//        }
+//    }
 
 
     public void setImageOnEvent(String baseFileName, String lightFileName, String darkFileName){

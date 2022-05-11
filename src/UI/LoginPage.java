@@ -31,7 +31,7 @@ public class LoginPage extends BaseFrame {
         BaseLabel lblLogo = new BaseLabel("<html><center>APU Gym Centre<br>Management System</html>",
                                             32,"Bernard MT Condensed",0xFFFFFF);
 
-        lblLogo.setImage("src/Resources/logo.png"); //setting the logo image inside the label.
+        lblLogo.setImage("src/Resources/Logo.png"); //setting the logo image inside the label.
 
         //Centring the Logo label horizontally and vertically inside the logo container panel.
         lblLogo.setAlignment(JLabel.CENTER, JLabel.CENTER);

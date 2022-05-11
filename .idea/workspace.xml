@@ -5,19 +5,31 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/BaseManagerDashboard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/BaseManagerDashboard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/BaseManagerDashboard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/BaseManagerDashboard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseCheckBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseCheckBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseComboBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseComboBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseTextField$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseTextField$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BaseTextField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/BaseDashboard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/BaseDashboard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/BaseDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/BaseDashboard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/BaseManagerDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/BaseManagerDashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/ManagerBookSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/ManagerDashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/ManagerRegistration.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Trainer/BaseTrainerDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Trainer/BaseTrainerDashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BaseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BaseButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BaseCheckBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BaseCheckBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BaseComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BaseComboBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BaseLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BaseLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BasePasswordField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BasePasswordField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BaseTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BaseTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/BaseDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/BaseDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/BaseManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/BaseManagerDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Trainer/BaseTrainerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Trainer/BaseTrainerDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/LoginPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +49,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17.0.2/lib/src.zip!/java.desktop/java/awt/BorderLayout.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../../../../Program Files/Java/jdk-17.0.2/lib/src.zip!/java.desktop/javax/swing/JPanel.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,13 +64,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.editor"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -79,7 +96,9 @@
       <updated>1652218522948</updated>
       <workItem from="1652218524213" duration="131000" />
       <workItem from="1652218790885" duration="2358000" />
-      <workItem from="1652237597871" duration="3634000" />
+      <workItem from="1652237597871" duration="4714000" />
+      <workItem from="1652259321654" duration="13695000" />
+      <workItem from="1652286749200" duration="4199000" />
     </task>
     <task id="LOCAL-00001" summary="added comboBox">
       <created>1652220789668</created>
@@ -95,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652221097550</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1652241919488</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652241919488</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,5 +154,9 @@
     <MESSAGE value="added comboBox" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

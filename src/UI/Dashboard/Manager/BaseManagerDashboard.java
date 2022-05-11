@@ -1,7 +1,6 @@
 package UI.Dashboard.Manager;
 
 import UI.BaseComponents.BaseButton;
-import UI.BaseComponents.BaseLabel;
 import UI.BaseComponents.BasePanel;
 import UI.Dashboard.BaseDashboard;
 
@@ -18,9 +17,8 @@ public class BaseManagerDashboard extends BaseDashboard {
 
 
     public BaseManagerDashboard(){
-        setTitle("Base Manger Dashboard Template");
+        setTitle("Manger");
     }
-
     public void setPnlRightSide(){
         super.setPnlRightSide();
         rightSideBorders();
@@ -30,17 +28,11 @@ public class BaseManagerDashboard extends BaseDashboard {
         getPnlManagerRegistration().setVisible(false);
 
 
-
         setPnlBookSession();
         this.getPnlRightSide().add(getPnlManagerBookSession(), BorderLayout.CENTER);
         getPnlManagerBookSession().setVisible(false);
     }
-    public void rightSideBorders(){
-        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.NORTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.EAST);
-        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.SOUTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.WEST);
-    }
+
 
     public void setPnlUserRegistration(){
         pnlManagerRegistration = new PnlManagerRegistration(false);
@@ -69,7 +61,7 @@ public class BaseManagerDashboard extends BaseDashboard {
         pnlUserRegistration = new BasePanel(false,280,50);
 //        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseButton btnUserRegistration = new BaseButton("User Registration", 20, 0xFFFFFF, 280, 40);
+        BaseButton btnUserRegistration = new BaseButton("User Registration", 20, 280, 40);
         btnUserRegistration.setImage("src/Resources/Manager/UserRegistration/baseUserRegistration.png");
         btnUserRegistration.setHorizontalAlignment(JButton.LEFT);
 //        btnUserRegistration.setPreviousFrame(currentFrame);
@@ -101,7 +93,7 @@ public class BaseManagerDashboard extends BaseDashboard {
         pnlBookSession = new BasePanel(false,280,50);
 //        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseButton btnBookSession = new BaseButton("Book training session", 20, 0xFFFFFF, 280, 40);
+        BaseButton btnBookSession = new BaseButton("Book training session", 20, 280, 40);
         btnBookSession.setImage("src/Resources/Manager/BookSession/baseBookSession.png");
         btnBookSession.setHorizontalAlignment(JButton.LEFT);
 //        btnBookSession.setPreviousFrame(currentFrame);

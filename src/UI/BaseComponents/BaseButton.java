@@ -1,22 +1,51 @@
 package UI.BaseComponents;
 
+import UI.BaseFrame;
+import UI.Dashboard.Manager.BaseManagerDashboard;
+import UI.Dashboard.Trainer.BaseTrainerDashboard;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BaseButton extends JButton implements MouseListener {
+public class BaseButton extends JButton implements MouseListener, ActionListener {
     private String baseFileName;
     private String lightFileName;
     private String darkFileName;
     private boolean hasImage;
     private String frameName;
-    public BaseButton(String text, int fontSize, int fontColor, int width, int height){
+    public BaseButton(String text, int width, int height){
+        setCommonPreSet();
+
+        setText(text);
+
+        setPreferredSize(new Dimension(width,height)); //Changing the size of the button.
+    }
+    public BaseButton(String text, int fontSize , int width, int height){
+        setCommonPreSet();
+
         setText(text);
         setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
+
+        setPreferredSize(new Dimension(width,height)); //Changing the size of the button.
+    }
+    public BaseButton(String text,String fontName, int fontSize , int fontColor, int width, int height){
+        setCommonPreSet();
+
+        setText(text);
+        setFont(new Font(fontName, Font.PLAIN, fontSize)); //changing font settings of the button.
         setForeground(new Color(fontColor)); //changing the button's text color.
 
         setPreferredSize(new Dimension(width,height)); //Changing the size of the button.
+    }
+
+    public void setCommonPreSet(){
+        setFont(new Font("Arial", Font.PLAIN, 24)); //changing font settings of the button.
+        setForeground(new Color(0xFFFFFF)); //changing the button's text color.
+
         setIconTextGap(20);
         setFocusable(false); //removing the annoying focus highlight around the button. (pre-set template)
 
@@ -26,7 +55,7 @@ public class BaseButton extends JButton implements MouseListener {
 
         setBorder(new RoundedBorder(15)); //Add new border radius. (pre-set template)
 
-//        addActionListener(this);
+        //addActionListener(this);
         //Adding a mouse listener change the button's behaviour depending on the mouse status above the button.
         addMouseListener(this);
     }
@@ -46,26 +75,17 @@ public class BaseButton extends JButton implements MouseListener {
         return frameName;
     }
 
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        switch (getFrameName()) {
-//            case "ManagerDashboard":
-//                if (e.getSource() == this) {
-//                    new ManagerDashboard();
-//                }
-//                break;
-//            case "ManagerRegistration":
-//                if (e.getSource() == this) {
-//                    new ManagerRegistration();
-//                }
-//                break;
-//            case "ManagerBookSession":
-//                if (e.getSource() == this) {
-//                    new ManagerBookSession();
-//                }
-//                break;
-//        }
-//    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == this) {
+            //enhanced switch statement
+            switch (getFrameName()) {
+                case "Login" -> new BaseManagerDashboard();
+                case "Trainer" -> new BaseTrainerDashboard();
+                case "frame" -> new BaseFrame();
+            }
+        }
+    }
 
 
     public void setImageOnEvent(String baseFileName, String lightFileName, String darkFileName){
@@ -120,6 +140,4 @@ public class BaseButton extends JButton implements MouseListener {
             this.setIcon(new ImageIcon(getBaseFileName()));
         }
     }
-
-
 }

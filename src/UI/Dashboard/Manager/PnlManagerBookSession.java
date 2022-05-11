@@ -109,6 +109,8 @@ public class PnlManagerBookSession extends BasePanel {
 
         BaseLabel lblPrice = new BaseLabel("Price", 24, "Arial", 0xFFFFFF);
 
+        String[] PriceOptions = {"100 RM","250 RM", "500 RM"};
+        BaseComboBox cmbPrice = new BaseComboBox(PriceOptions, 200, 50);
         BaseTextField txtPrice = new BaseTextField("",24, 400,50);
 
         pnlPrice.add(lblPrice);
@@ -153,12 +155,13 @@ public class PnlManagerBookSession extends BasePanel {
         loginTextFields[3] = txtHallNo;
         loginTextFields[4] = txtDuration;
         loginTextFields[5] = txtDateTime;
-        loginTextFields[6] = txtPrice;
+        loginTextFields[6] = cmbPrice;
 
         GridBagConstraints GBCLogin = new GridBagConstraints();
-        GBCLogin.weightx = 1;
-        GBCLogin.weighty = 1;
+        GBCLogin.weightx = 0.5;
+        GBCLogin.weighty = 0.5;
         GBCLogin.fill= GridBagConstraints.HORIZONTAL;
+
 
 
         GBCLogin.gridx = 0;
@@ -167,12 +170,11 @@ public class PnlManagerBookSession extends BasePanel {
         this.add(lblTitle, GBCLogin);
 
 
-        GBCLogin.anchor = GridBagConstraints.EAST;
+
         for(int lblRows = 0; lblRows < loginLabels.length; lblRows++){
             GBCLogin.gridx = 0;
             GBCLogin.gridy = lblRows + 1;
             GBCLogin.gridwidth = 1;
-
             this.add(loginLabels[lblRows], GBCLogin);
         }
 

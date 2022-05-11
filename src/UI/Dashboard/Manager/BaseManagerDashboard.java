@@ -13,8 +13,6 @@ import java.awt.event.ActionListener;
 public class BaseManagerDashboard extends BaseDashboard {
     private BasePanel pnlUserRegistration;
     private BasePanel pnlBookSession;
-//    private String currentFrame;
-    private boolean isShown = false;
     private PnlManagerRegistration pnlManagerRegistration;
     private PnlManagerBookSession pnlManagerBookSession;
 
@@ -25,10 +23,7 @@ public class BaseManagerDashboard extends BaseDashboard {
 
     public void setPnlRightSide(){
         super.setPnlRightSide();
-        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.NORTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.EAST);
-        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.SOUTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.WEST);
+        rightSideBorders();
 
         setPnlUserRegistration();
         this.getPnlRightSide().add(getPnlManagerRegistration(), BorderLayout.CENTER);
@@ -39,6 +34,12 @@ public class BaseManagerDashboard extends BaseDashboard {
         setPnlBookSession();
         this.getPnlRightSide().add(getPnlManagerBookSession(), BorderLayout.CENTER);
         getPnlManagerBookSession().setVisible(false);
+    }
+    public void rightSideBorders(){
+        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.NORTH);
+        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.EAST);
+        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.SOUTH);
+        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.WEST);
     }
 
     public void setPnlUserRegistration(){
@@ -77,7 +78,7 @@ public class BaseManagerDashboard extends BaseDashboard {
                                             "src/Resources/Manager/UserRegistration/lightUserRegistration.png",
                                             "src/Resources/Manager/UserRegistration/darkUserRegistration.png");
 
-        btnUserRegistration.setFrameName("ManagerRegistration");
+//        btnUserRegistration.setFrameName("ManagerRegistration");
 
 
         btnUserRegistration.addActionListener(new ActionListener() {

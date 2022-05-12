@@ -4,7 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BaseLabel extends JLabel {
+    /**
+     * the first constructor is for labels that act as image containers
+     */
     public BaseLabel() {
+    }
+    public BaseLabel(String text) {
+        setText(text);
+        setFont(new Font("Arial", Font.PLAIN, 24)); //changing font settings of the button.
+        setForeground(new Color(0xFFFFFF)); //changing the button's text color.
+    }
+    public BaseLabel(String text, int fontSize) {
+        setText(text);
+        setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
+        setForeground(new Color(0xFFFFFF)); //changing the button's text color.
+    }
+    public BaseLabel(String text, int fontSize, String fontName) {
+        setText(text);
+        setFont(new Font(fontName, Font.PLAIN, fontSize)); //changing font settings of the button.
+        setForeground(new Color(0xFFFFFF)); //changing the button's text color.
     }
     public BaseLabel(String text, int fontSize, String fontName, int fontColor) {
         setText(text);

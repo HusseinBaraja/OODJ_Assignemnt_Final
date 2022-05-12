@@ -1,7 +1,6 @@
 package UI.Dashboard.Manager;
 
 import UI.BaseComponents.BaseButton;
-import UI.BaseComponents.BaseLabel;
 import UI.BaseComponents.BasePanel;
 import UI.Dashboard.BaseDashboard;
 
@@ -13,33 +12,48 @@ import java.awt.event.ActionListener;
 public class BaseManagerDashboard extends BaseDashboard {
     private BasePanel pnlUserRegistration;
     private BasePanel pnlBookSession;
+    private PnlManagerDashboard pnlManagerDashboard;
     private PnlManagerRegistration pnlManagerRegistration;
     private PnlManagerBookSession pnlManagerBookSession;
+    private int chosenPanel = 0;
 
 
     public BaseManagerDashboard(){
-        setTitle("Base Manger Dashboard Template");
+        setTitle("Manger");
     }
-
     public void setPnlRightSide(){
         super.setPnlRightSide();
         rightSideBorders();
 
+        //we set the panels here so that setVisible(true || false) works without throwing a null exception
+        setPnlManagerDashboard();
         setPnlUserRegistration();
-        this.getPnlRightSide().add(getPnlManagerRegistration(), BorderLayout.CENTER);
-        getPnlManagerRegistration().setVisible(false);
-
-
-
         setPnlBookSession();
-        this.getPnlRightSide().add(getPnlManagerBookSession(), BorderLayout.CENTER);
-        getPnlManagerBookSession().setVisible(false);
+
+        setPanel();
     }
-    public void rightSideBorders(){
-        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.NORTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.EAST);
-        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.SOUTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.WEST);
+
+    private void setPanel(){
+        switch (chosenPanel) {
+            case 0 -> {
+                setPnlManagerDashboard();
+                this.getPnlRightSide().add(getPnlManagerDashboard(), BorderLayout.CENTER);
+            }
+            case 1 -> {
+                setPnlUserRegistration();
+                this.getPnlRightSide().add(getPnlManagerRegistration(), BorderLayout.CENTER);
+            }
+            case 2 -> {
+                setPnlBookSession();
+                this.getPnlRightSide().add(getPnlManagerBookSession(), BorderLayout.CENTER);
+            }
+        }
+    }
+    public void setPnlManagerDashboard(){
+        pnlManagerDashboard = new PnlManagerDashboard(false);
+    }
+    public PnlManagerDashboard getPnlManagerDashboard(){
+        return pnlManagerDashboard;
     }
 
     public void setPnlUserRegistration(){
@@ -55,6 +69,7 @@ public class BaseManagerDashboard extends BaseDashboard {
     public PnlManagerBookSession getPnlManagerBookSession(){
         return pnlManagerBookSession;
     }
+
     @Override
     public void setPnlTopSideBar(){
         super.setPnlTopSideBar();
@@ -65,11 +80,28 @@ public class BaseManagerDashboard extends BaseDashboard {
         getPnlTopSideBar().add(getPnlBookSessionButton());
     }
 
+    @Override
+    public void setPnlDashboard() {
+        super.setPnlDashboard();
+        super.getBtnDashboard().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == getBtnDashboard()){
+                    chosenPanel = 0;
+                    setPanel();
+                    pnlManagerBookSession.setVisible(false);
+                    pnlManagerRegistration.setVisible(false);
+                    pnlManagerDashboard.setVisible(true);
+                }
+            }
+        });
+        getPnlDashboard().add(getBtnDashboard());
+    }
     public void setPnlUserRegistrationButton() {
         pnlUserRegistration = new BasePanel(false,280,50);
 //        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseButton btnUserRegistration = new BaseButton("User Registration", 20, 0xFFFFFF, 280, 40);
+        BaseButton btnUserRegistration = new BaseButton("User Registration", 20, 280, 40);
         btnUserRegistration.setImage("src/Resources/Manager/UserRegistration/baseUserRegistration.png");
         btnUserRegistration.setHorizontalAlignment(JButton.LEFT);
 //        btnUserRegistration.setPreviousFrame(currentFrame);
@@ -85,12 +117,15 @@ public class BaseManagerDashboard extends BaseDashboard {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnUserRegistration){
+                    chosenPanel = 1;
+                    setPanel();
+                    pnlManagerDashboard.setVisible(false);
                     pnlManagerBookSession.setVisible(false);
                     pnlManagerRegistration.setVisible(true);
                 }
             }
         });
-        
+
         pnlUserRegistration.add(btnUserRegistration);
     }
     public BasePanel getPnlUserRegistrationButton(){
@@ -101,7 +136,7 @@ public class BaseManagerDashboard extends BaseDashboard {
         pnlBookSession = new BasePanel(false,280,50);
 //        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseButton btnBookSession = new BaseButton("Book training session", 20, 0xFFFFFF, 280, 40);
+        BaseButton btnBookSession = new BaseButton("Book training session", 20, 280, 40);
         btnBookSession.setImage("src/Resources/Manager/BookSession/baseBookSession.png");
         btnBookSession.setHorizontalAlignment(JButton.LEFT);
 //        btnBookSession.setPreviousFrame(currentFrame);
@@ -116,6 +151,9 @@ public class BaseManagerDashboard extends BaseDashboard {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnBookSession){
+                    chosenPanel = 2;
+                    setPanel();
+                    pnlManagerDashboard.setVisible(false);
                     pnlManagerRegistration.setVisible(false);
                     pnlManagerBookSession.setVisible(true);
                 }
@@ -127,6 +165,4 @@ public class BaseManagerDashboard extends BaseDashboard {
     public BasePanel getPnlBookSessionButton(){
         return pnlBookSession;
     }
-
-
 }

@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class LoginPage extends BaseFrame {
     private BasePanel pnlLogoContainer;
-//    private JPanel pnlSettings;
     private BasePanel pnlLogin;
 
     public LoginPage(){
@@ -29,7 +28,7 @@ public class LoginPage extends BaseFrame {
 
         //Creating the Label that Contains Both the Logo and the Logo image. By using HTML the label can go to the next line.
         BaseLabel lblLogo = new BaseLabel("<html><center>APU Gym Centre<br>Management System</html>",
-                                            32,"Bernard MT Condensed",0xFFFFFF);
+                                            32,"Bernard MT Condensed");
 
         lblLogo.setImage("src/Resources/Logo.png"); //setting the logo image inside the label.
 
@@ -40,6 +39,7 @@ public class LoginPage extends BaseFrame {
         lblLogo.setTextPosition(JLabel.CENTER,JLabel.BOTTOM);
 
         pnlLogoContainer.add(lblLogo, BorderLayout.CENTER); //Adding the logo label to the logo container panel
+
     }
     public JPanel getPnlLogoContainer(){
         return pnlLogoContainer;
@@ -60,7 +60,7 @@ public class LoginPage extends BaseFrame {
         BasePanel pnlTitle = new BasePanel(false, 200, 100);
 
         //Creating the label for the page title.
-        BaseLabel lblTitle = new BaseLabel("Login", 64, "Arial", 0xFFFFFF);
+        BaseLabel lblTitle = new BaseLabel("Login", 64);
 
         //Centring the title label horizontally and vertically inside title panel.
         lblTitle.setAlignment(JLabel.CENTER, JLabel.CENTER);
@@ -74,10 +74,10 @@ public class LoginPage extends BaseFrame {
         pnlUserName.setLayout(new FlowLayout(FlowLayout.LEADING));
 
         //Creating the label for the Username field.
-        BaseLabel lblUserName = new BaseLabel("Username or Email Address", 24, "Arial", 0xFFFFFF);
+        BaseLabel lblUserName = new BaseLabel("Username or Email Address");
 
         //Creating the text field for the Username.
-        BaseTextField txtUserName = new BaseTextField("Enter your Username or Email here", 24, 750,50);
+        BaseTextField txtUserName = new BaseTextField("Enter your Username or Email here", 750,50);
 
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
@@ -87,7 +87,7 @@ public class LoginPage extends BaseFrame {
         BasePanel pnlPassword = new BasePanel(false,750,100);
         pnlPassword.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseLabel lblPassword = new BaseLabel("Password", 24, "Arial", 0xFFFFFF);
+        BaseLabel lblPassword = new BaseLabel("Password");
 
         BasePasswordField txtPassword = new BasePasswordField(24, 750,50);
 
@@ -99,7 +99,7 @@ public class LoginPage extends BaseFrame {
         BasePanel pnlKeepSignIn = new BasePanel(false, 750, 40);
         pnlKeepSignIn.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        BaseCheckBox cbKeepSignIn = new BaseCheckBox("Keep me signed in", 18, 0xFFFFFF);
+        BaseCheckBox cbKeepSignIn = new BaseCheckBox("Keep me signed in");
 
         pnlKeepSignIn.add(cbKeepSignIn);
 
@@ -107,7 +107,7 @@ public class LoginPage extends BaseFrame {
         BasePanel pnlSignIn = new BasePanel(false, 750, 100);
 
         //Creating the Settings button:
-        BaseButton btnSignIn = new BaseButton("Sign in", 24, 0xFFFFFF, 400, 40);
+        BaseButton btnSignIn = new BaseButton("Sign in", 400, 40);
         pnlSignIn.add(btnSignIn); //Adding the sign-in button to the sign-in panel which is in the bottom of the right side of the frame.
 
 

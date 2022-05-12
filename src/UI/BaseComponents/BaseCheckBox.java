@@ -6,13 +6,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class BaseCheckBox extends JCheckBox implements MouseListener {
+    public BaseCheckBox(String text) {
+        setText(text);
+        setFont(new Font("Arial", Font.PLAIN, 18)); //changing font settings of the button.
+        setForeground(new Color(0xFFFFFF)); //changing the button's text color.
+
+        setCommonPreSet();
+    }
     public BaseCheckBox(String text, int fontSize, int fontColor) {
         setText(text);
         setFont(new Font("Arial", Font.PLAIN, fontSize)); //changing font settings of the button.
         setForeground(new Color(fontColor)); //changing the button's text color.
 
-        setPreferredSize(new Dimension(750,40));
+        setCommonPreSet();
+    }
 
+    public void setCommonPreSet(){
         this.setIcon(new ImageIcon("src/Resources/checkBox/baseCheckBox.png"));
         this.setSelectedIcon(new ImageIcon("src/Resources/checkBox/baseCheckedCheckBox.png"));
 
@@ -21,7 +30,6 @@ public class BaseCheckBox extends JCheckBox implements MouseListener {
         //Adding a mouse listener change the button's behaviour depending on the mouse status above the button.
         addMouseListener(this);
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
 

@@ -20,6 +20,12 @@ public class BaseDashboard extends BaseFrame {
     public BaseDashboard(){
         setTitle("Base Dashboard Template");
     }
+    public void rightSideBorders(){
+        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.NORTH);
+        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.EAST);
+        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.SOUTH);
+        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.WEST);
+    }
     @Override
     public void setPnlLeftSide(){
         super.setPnlLeftSide();
@@ -51,10 +57,10 @@ public class BaseDashboard extends BaseFrame {
     }
 
     public void setPnlDashboard() {
-        pnlDashboard = new BasePanel(false,280,50);
+        pnlDashboard = new BasePanel(false);
 //        pnlDashboard.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        btnDashboard = new BaseButton("Dashboard", 20, 0xFFFFFF, 280, 40);
+        btnDashboard = new BaseButton("Dashboard", 20, 280, 40);
         btnDashboard.setImage("src/Resources/Dashboard/baseDashboard.png");
         btnDashboard.setHorizontalAlignment(JButton.LEFT);
 
@@ -63,21 +69,14 @@ public class BaseDashboard extends BaseFrame {
                                      "src/Resources/Dashboard/darkDashboard.png");
 
 
-        getSomething("ManagerDashboard");
-        btnDashboard.setFrameName(something);
-
-        btnDashboard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BaseDashboard.this.dispose();
-            }
-        });
+//        btnDashboard.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                BaseDashboard.this.dispose();
+//            }
+//        });
 
         pnlDashboard.add(btnDashboard);
-    }
-    public String getSomething(String something){
-        this.something = something;
-        return this.something;
     }
     public BasePanel getPnlDashboard(){
         return pnlDashboard;

@@ -24,7 +24,7 @@ public class BaseDashboard extends BaseFrame {
         this.getPnlRightSide().add(new BasePanel(false), BorderLayout.NORTH);
         this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.EAST);
         this.getPnlRightSide().add(new BasePanel(false), BorderLayout.SOUTH);
-        this.getPnlRightSide().add(new BasePanel(false, 100,500), BorderLayout.WEST);
+        this.getPnlRightSide().add(new BasePanel(false), BorderLayout.WEST);
     }
     @Override
     public void setPnlLeftSide(){
@@ -69,12 +69,12 @@ public class BaseDashboard extends BaseFrame {
                                      "src/Resources/Dashboard/darkDashboard.png");
 
 
-        btnDashboard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                BaseDashboard.this.dispose();
-            }
-        });
+//        btnDashboard.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                BaseDashboard.this.dispose();
+//            }
+//        });
 
         pnlDashboard.add(btnDashboard);
     }

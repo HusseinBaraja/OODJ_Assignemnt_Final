@@ -129,38 +129,38 @@ public class PnlManagerBookSession extends BasePanel {
         loginTextFields[5] = txtDateTime;
         loginTextFields[6] = cmbPrice;
 
-        GridBagConstraints GBCLogin = new GridBagConstraints();
-        GBCLogin.weightx = 0.5;
-        GBCLogin.weighty = 0.5;
-        GBCLogin.fill= GridBagConstraints.HORIZONTAL;
+        GridBagConstraints GBCBookSession = new GridBagConstraints();
+        GBCBookSession.weightx = 0.5;
+        GBCBookSession.weighty = 0.5;
+        GBCBookSession.fill= GridBagConstraints.HORIZONTAL;
 
 
 
-        GBCLogin.gridx = 0;
-        GBCLogin.gridy = 0;
-        GBCLogin.gridwidth = 2;
-        this.add(pnlTitle, GBCLogin);
+        GBCBookSession.gridx = 0;
+        GBCBookSession.gridy = 0;
+        GBCBookSession.gridwidth = 2;
+        this.add(pnlTitle, GBCBookSession);
 
 
 
         for(int lblRows = 0; lblRows < loginLabels.length; lblRows++){
-            GBCLogin.gridx = 0;
-            GBCLogin.gridy = lblRows + 1;
-            GBCLogin.gridwidth = 1;
-            this.add(loginLabels[lblRows], GBCLogin);
+            GBCBookSession.gridx = 0;
+            GBCBookSession.gridy = lblRows + 1;
+            GBCBookSession.gridwidth = 1;
+            this.add(loginLabels[lblRows], GBCBookSession);
         }
 
         for(int txtRows = 0; txtRows < loginLabels.length; txtRows++){
-            GBCLogin.gridx = 1;
-            GBCLogin.gridy = txtRows + 1;
-            GBCLogin.gridwidth = 1;
-            this.add(loginTextFields[txtRows], GBCLogin);
+            GBCBookSession.gridx = 1;
+            GBCBookSession.gridy = txtRows + 1;
+            GBCBookSession.gridwidth = 1;
+            this.add(loginTextFields[txtRows], GBCBookSession);
         }
 
-        GBCLogin.gridx = 0;
-        GBCLogin.gridy = 8;
-        GBCLogin.gridwidth = 2;
-        this.add(pnlBook, GBCLogin);
+        GBCBookSession.gridx = 0;
+        GBCBookSession.gridy = 8;
+        GBCBookSession.gridwidth = 2;
+        this.add(pnlBook, GBCBookSession);
     }
 
 }

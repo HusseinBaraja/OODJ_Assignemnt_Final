@@ -11,93 +11,95 @@ public class PnlManagerRegistration extends BasePanel {
         setLayout(new GridBagLayout());
 
         BasePanel pnlTitle = new BasePanel(false);
-        BaseLabel lblTitle = new BaseLabel("REG EDIT", 54);
+        BaseLabel lblTitle = new BaseLabel("Manager registration", 40);
         pnlTitle.add(lblTitle); //Adding the title label to the title panel
 
 
+        BasePanel pnlUN = new BasePanel(false);
+        pnlUN.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblUN = new BaseLabel("Customer Username:    ", 20);
+        pnlUN.add(lblUN);
 
-        BasePanel pnlCustomerUN = new BasePanel(false);
-        pnlCustomerUN.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblCustomerUN = new BaseLabel("Customer Username:    ");
-        pnlCustomerUN.add(lblCustomerUN);
 
-
-        String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig","Dog2" };
-        BaseComboBox cmbCustomerUN = new BaseComboBox(petStrings, 400, 50);
-
-        //Creating the text field for the Username.
-        BaseTextField txtCustomerUN = new BaseTextField(24, 400,50);
+        ///Creating the text field for the Username.
+        BaseTextField txtUN = new BaseTextField(24, 400,40);
 
 
 
-        BasePanel pnlTrainerUN = new BasePanel(false);
-        pnlTrainerUN.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblTrainerUN = new BaseLabel("Trainer Username:    ");
-        pnlTrainerUN.add(lblTrainerUN);
+        BasePanel pnlFullName = new BasePanel(false);
+        pnlFullName.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblFullName = new BaseLabel("Full name:    ", 20);
+        pnlFullName.add(lblFullName);
 
 
-        BaseTextField txtTrainerUN = new BaseTextField(24, 400,50);
+        BaseTextField txtFullName = new BaseTextField(24, 400,40);
 
 
-
-        BasePanel pnlExerciseType = new BasePanel(false);
-        pnlExerciseType.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblExerciseType = new BaseLabel("Exercise Type:    ");
-        pnlExerciseType.add(lblExerciseType);
-
-
-        BaseTextField txtExerciseType = new BaseTextField(24, 400,50);
+        BasePanel pnlPassword = new BasePanel(false);
+        pnlPassword.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblPassword = new BaseLabel("Password:    ", 20);
+        pnlPassword.add(lblPassword);
 
 
-
-        BasePanel pnlHallNo = new BasePanel(false);
-        pnlHallNo.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblHallNo = new BaseLabel("Hall No:    ");
-        pnlHallNo.add(lblHallNo);
-
-
-        BaseTextField txtHallNo = new BaseTextField(24, 400,50);
+        BaseTextField txtPassword = new BaseTextField(24, 400,40);
 
 
 
-        BasePanel pnlDuration = new BasePanel(false);
-        pnlDuration.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblDuration = new BaseLabel("Duration:    ");
-        pnlDuration.add(lblDuration);
+        BasePanel pnlConfirmPassword = new BasePanel(false);
+        pnlConfirmPassword.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblHallNo = new BaseLabel("Confirm Password:    ", 20);
+        pnlConfirmPassword.add(lblHallNo);
 
 
-        BaseTextField txtDuration = new BaseTextField(24, 400,50);
+        BaseTextField txtConfirmPassword = new BaseTextField(24, 400,40);
 
+
+
+        BasePanel pnlMobileNo = new BasePanel(false);
+        pnlMobileNo.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblDuration = new BaseLabel("Mobile Number:    ", 20);
+        pnlMobileNo.add(lblDuration);
+
+
+        BaseTextField txtMobileNo = new BaseTextField(24, 400,40);
 
 
         BasePanel pnlDateTime = new BasePanel(false);
         pnlDateTime.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblDateTime = new BaseLabel("Date & Time:    ");
+        BaseLabel lblDateTime = new BaseLabel("D.O.B:    ", 20);
         pnlDateTime.add(lblDateTime);
 
 
-        BaseTextField txtDateTime = new BaseTextField(24, 400,50);
+        BaseTextField txtDateTime = new BaseTextField("DD/MM/YYYY",20, 400,40);
 
 
 
-        BasePanel pnlPrice = new BasePanel(false);
-        pnlPrice.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblPrice = new BaseLabel("Price:    ");
-        pnlPrice.add(lblPrice);
+        BasePanel pnlGender = new BasePanel(false);
+        pnlGender.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblGender = new BaseLabel("Price:    ", 20);
+        pnlGender.add(lblGender);
 
 
-        String[] PriceOptions = {"100 RM","250 RM", "500 RM"};
-        BaseComboBox cmbPrice = new BaseComboBox(PriceOptions, 200, 50);
-
-        BaseTextField txtPrice = new BaseTextField(24, 400,50);
+        String[] strGender = {"Male", "Female"};
+        BaseComboBox cmbGender = new BaseComboBox(strGender, 20, 200, 40);
 
 
 
-        BasePanel pnlBook = new BasePanel(false);
-        pnlBook.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        BasePanel pnlRole = new BasePanel(false);
+        pnlRole.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblRole = new BaseLabel("Role:    ");
+        pnlRole.add(lblRole);
+
+
+        String[] strRole = {"Manager", "Trainer", "Customer"};
+        BaseComboBox cmbRole = new BaseComboBox(strRole, 20, 200, 40);
+
+        BasePanel pnlRegister = new BasePanel(false);
+        pnlRegister.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
         //Creating the book button:
-        BaseButton btnBook = new BaseButton("Book", 200, 40);
-        pnlBook.add(btnBook);
+        BaseButton btnBook = new BaseButton("Register", 200, 40);
+        pnlRegister.add(btnBook);
 
         /* How to add change listener
         btnBook.addChangeListener(new ChangeListener()
@@ -111,23 +113,25 @@ public class PnlManagerRegistration extends BasePanel {
         });
         */
 
-        Component[] loginLabels = new Component[7];
-        loginLabels[0] = pnlCustomerUN;
-        loginLabels[1] = pnlTrainerUN;
-        loginLabels[2] = pnlExerciseType;
-        loginLabels[3] = pnlHallNo;
-        loginLabels[4] = pnlDuration;
+        Component[] loginLabels = new Component[8];
+        loginLabels[0] = pnlUN;
+        loginLabels[1] = pnlFullName;
+        loginLabels[2] = pnlPassword;
+        loginLabels[3] = pnlConfirmPassword;
+        loginLabels[4] = pnlMobileNo;
         loginLabels[5] = pnlDateTime;
-        loginLabels[6] = pnlPrice;
+        loginLabels[6] = pnlGender;
+        loginLabels[7] = pnlRole;
 
-        Component[] loginTextFields = new Component[7];
-        loginTextFields[0] = cmbCustomerUN;
-        loginTextFields[1] = txtTrainerUN;
-        loginTextFields[2] = txtExerciseType;
-        loginTextFields[3] = txtHallNo;
-        loginTextFields[4] = txtDuration;
+        Component[] loginTextFields = new Component[8];
+        loginTextFields[0] = txtUN;
+        loginTextFields[1] = txtFullName;
+        loginTextFields[2] = txtPassword;
+        loginTextFields[3] = txtConfirmPassword;
+        loginTextFields[4] = txtMobileNo;
         loginTextFields[5] = txtDateTime;
-        loginTextFields[6] = cmbPrice;
+        loginTextFields[6] = cmbGender;
+        loginTextFields[7] = cmbRole;
 
         GridBagConstraints GBCBookSession = new GridBagConstraints();
         GBCBookSession.weightx = 0.5;
@@ -158,8 +162,8 @@ public class PnlManagerRegistration extends BasePanel {
         }
 
         GBCBookSession.gridx = 0;
-        GBCBookSession.gridy = 8;
+        GBCBookSession.gridy = 10;
         GBCBookSession.gridwidth = 2;
-        this.add(pnlBook, GBCBookSession);
+        this.add(pnlRegister, GBCBookSession);
     }
 }

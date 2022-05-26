@@ -11,7 +11,7 @@ public class PnlManagerBookSession extends BasePanel {
         setLayout(new GridBagLayout());
 
         BasePanel pnlTitle = new BasePanel(false);
-        BaseLabel lblTitle = new BaseLabel("Book Training Session", 54);
+        BaseLabel lblTitle = new BaseLabel("Book Training Session", 40);
         pnlTitle.add(lblTitle); //Adding the title label to the title panel
 
 
@@ -22,8 +22,7 @@ public class PnlManagerBookSession extends BasePanel {
         pnlCustomerUN.add(lblCustomerUN);
 
 
-        String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig","Dog2" };
-        BaseComboBox cmbCustomerUN = new BaseComboBox(petStrings, 400, 50);
+
 
         //Creating the text field for the Username.
         BaseTextField txtCustomerUN = new BaseTextField(24, 400,50);
@@ -46,18 +45,18 @@ public class PnlManagerBookSession extends BasePanel {
         pnlExerciseType.add(lblExerciseType);
 
 
-        BaseTextField txtExerciseType = new BaseTextField(24, 400,50);
+
+        String[] strExercises = { "Weightlifting", "Resistance band", "Bicep curls", "Bicep curls", "Pull-ups","Dips" };
+        BaseComboBox cmbExerciseType = new BaseComboBox(strExercises, 400, 50);
 
 
+        BasePanel pnlDate = new BasePanel(false);
+        pnlDate.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        BaseLabel lblDate = new BaseLabel("Date:    ");
+        pnlDate.add(lblDate);
 
-        BasePanel pnlHallNo = new BasePanel(false);
-        pnlHallNo.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblHallNo = new BaseLabel("Hall No:    ");
-        pnlHallNo.add(lblHallNo);
 
-
-        BaseTextField txtHallNo = new BaseTextField(24, 400,50);
-
+        BaseTextField txtDate = new BaseTextField("DD/MM/YYYY",24, 400,50);
 
 
         BasePanel pnlDuration = new BasePanel(false);
@@ -66,17 +65,9 @@ public class PnlManagerBookSession extends BasePanel {
         pnlDuration.add(lblDuration);
 
 
-        BaseTextField txtDuration = new BaseTextField(24, 400,50);
 
-
-
-        BasePanel pnlDateTime = new BasePanel(false);
-        pnlDateTime.setLayout(new FlowLayout(FlowLayout.TRAILING));
-        BaseLabel lblDateTime = new BaseLabel("Date & Time:    ");
-        pnlDateTime.add(lblDateTime);
-
-
-        BaseTextField txtDateTime = new BaseTextField(24, 400,50);
+        String[] strDuration = { "8am - 9am", "9am - 10am", "10am - 11am", "11am - 12pm", "2pm - 3pm","3pm - 4pm" };
+        BaseComboBox cmbDuration = new BaseComboBox(strDuration, 400, 50);
 
 
 
@@ -89,7 +80,6 @@ public class PnlManagerBookSession extends BasePanel {
         String[] PriceOptions = {"100 RM","250 RM", "500 RM"};
         BaseComboBox cmbPrice = new BaseComboBox(PriceOptions, 200, 50);
 
-        BaseTextField txtPrice = new BaseTextField(24, 400,50);
 
 
 
@@ -111,23 +101,21 @@ public class PnlManagerBookSession extends BasePanel {
         });
         */
 
-        Component[] loginLabels = new Component[7];
+        Component[] loginLabels = new Component[6];
         loginLabels[0] = pnlCustomerUN;
         loginLabels[1] = pnlTrainerUN;
         loginLabels[2] = pnlExerciseType;
-        loginLabels[3] = pnlHallNo;
-        loginLabels[4] = pnlDuration;
-        loginLabels[5] = pnlDateTime;
-        loginLabels[6] = pnlPrice;
+        loginLabels[3] = pnlDuration;
+        loginLabels[4] = pnlDate;
+        loginLabels[5] = pnlPrice;
 
-        Component[] loginTextFields = new Component[7];
-        loginTextFields[0] = cmbCustomerUN;
+        Component[] loginTextFields = new Component[6];
+        loginTextFields[0] = txtCustomerUN;
         loginTextFields[1] = txtTrainerUN;
-        loginTextFields[2] = txtExerciseType;
-        loginTextFields[3] = txtHallNo;
-        loginTextFields[4] = txtDuration;
-        loginTextFields[5] = txtDateTime;
-        loginTextFields[6] = cmbPrice;
+        loginTextFields[2] = cmbExerciseType;
+        loginTextFields[3] = cmbDuration;
+        loginTextFields[4] = txtDate;
+        loginTextFields[5] = cmbPrice;
 
         GridBagConstraints GBCBookSession = new GridBagConstraints();
         GBCBookSession.weightx = 0.5;

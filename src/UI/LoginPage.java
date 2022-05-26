@@ -1,6 +1,5 @@
 package UI;
 
-import Model.LoginModel;
 import UI.BaseComponents.*;
 import UI.Dashboard.Manager.BaseManagerDashboard;
 import UI.Dashboard.Trainer.BaseTrainerDashboard;
@@ -16,11 +15,9 @@ import java.util.Scanner;
 public class LoginPage extends BaseFrame {
     private BasePanel pnlLogoContainer;
     private BasePanel pnlLogin;
-    private BaseLabel lblTitle;
     private BaseTextField txtUserName;
     private BasePasswordField txtPassword;
-    private BaseCheckBox cbKeepSignIn;
-    private BaseButton btnSignIn;
+    private BaseCheckBox cbShowPassword;
 
 
     public LoginPage(){
@@ -74,7 +71,7 @@ public class LoginPage extends BaseFrame {
         BasePanel pnlTitle = new BasePanel(false, 200, 100);
 
         //Creating the label for the page title.
-        lblTitle = new BaseLabel("Login", 64);
+        BaseLabel lblTitle = new BaseLabel("Login", 64);
 
         //Centring the title label horizontally and vertically inside title panel.
         lblTitle.setAlignment(JLabel.CENTER, JLabel.CENTER);
@@ -88,10 +85,10 @@ public class LoginPage extends BaseFrame {
         pnlUserName.setLayout(new FlowLayout(FlowLayout.LEADING));
 
         //Creating the label for the Username field.
-        BaseLabel lblUserName = new BaseLabel("Username or Email Address");
+        BaseLabel lblUserName = new BaseLabel("Username");
 
         //Creating the text field for the Username.
-        txtUserName = new BaseTextField("Enter your Username or Email here", 750,50);
+        txtUserName = new BaseTextField("Enter your Username here", 750,50);
 
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
@@ -110,18 +107,33 @@ public class LoginPage extends BaseFrame {
 
 
 
-        BasePanel pnlKeepSignIn = new BasePanel(false, 750, 40);
-        pnlKeepSignIn.setLayout(new FlowLayout(FlowLayout.LEADING));
+        BasePanel pnlShowPassword = new BasePanel(false, 750, 40);
+        pnlShowPassword.setLayout(new FlowLayout(FlowLayout.LEADING));
 
-        cbKeepSignIn = new BaseCheckBox("Keep me signed in");
+        cbShowPassword = new BaseCheckBox("Show Password");
+        cbShowPassword.addActionListener(e -> {
+            if (LoginPage.this.cbShowPassword.isSelected()){
+                LoginPage.this.txtPassword.setEchoChar((char) 0);
+            }
+            else{
+                LoginPage.this.txtPassword.setEchoChar(('*'));
+            }
 
-        pnlKeepSignIn.add(cbKeepSignIn);
+        });
+        if(cbShowPassword.isSelected()){
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('*');
+        }
+
+        pnlShowPassword.add(cbShowPassword);
 
 
         BasePanel pnlSignIn = new BasePanel(false, 750, 100);
 
-        //Creating the Settings button:
-        btnSignIn = new BaseButton("Sign in", 400, 40);
+        //Creating the Login button:
+        BaseButton btnSignIn = new BaseButton("Log in", 400, 40);
+
         pnlSignIn.add(btnSignIn); //Adding the sign-in button to the sign-in panel which is in the bottom of the right side of the frame.
 
 
@@ -131,7 +143,7 @@ public class LoginPage extends BaseFrame {
         loginPanels[0] = pnlTitle;
         loginPanels[1] = pnlUserName;
         loginPanels[2] = pnlPassword;
-        loginPanels[3] = pnlKeepSignIn;
+        loginPanels[3] = pnlShowPassword;
         loginPanels[4] = pnlSignIn;
 
         GridBagConstraints GBCLogin = new GridBagConstraints();
@@ -146,8 +158,7 @@ public class LoginPage extends BaseFrame {
             GBCLogin.gridy = rows;
             pnlLogin.add(loginPanels[rows], GBCLogin);
         }
-        ActionListener loginListener = new ClickListener1();
-        btnSignIn.addActionListener(loginListener);
+        btnSignIn.addActionListener(new LoginListener());
 
     }
     public JPanel getPnlLogin(){
@@ -161,50 +172,40 @@ public class LoginPage extends BaseFrame {
         return txtPassword;
     }
 
-    public void ApplyActionListener(){
-        ActionListener loginListener = new ClickListener1();
-        btnSignIn.addActionListener(loginListener);
-    }
-    public class ClickListener1 implements ActionListener {
+    public class LoginListener implements ActionListener {
         boolean foundPassword;
         public void actionPerformed(ActionEvent event) {
-            //File inputFile = new File("src/DataBase/LoginRecord");
-
-            String userNameInput = txtUserName.getText();
-            String passwordInput = String.valueOf(txtPassword.getPassword());
+            String strInputUserName = getTxtUserName().getText();
+            String strInputPassword = String.valueOf(getTxtPassword().getPassword());
             foundPassword = false;
 
             try {
-                Scanner in = new Scanner(new File("src/DataBase/LoginRecord"));
-                if(!foundPassword){
-                    while (in.hasNextLine()) {
-                        String s = in.nextLine();
-                        String[] sArray = s.split(",");
+                Scanner scUserRecords = new Scanner(new File("src/DataBase/LoginRecord.txt"));
+                while (scUserRecords.hasNextLine()) {
+                    String strThisLine = scUserRecords.nextLine();
+                    String[] arUserLine = strThisLine.split(",");
 
-                        System.out.println(sArray[0]); //Just to verify that file is being read
-                        System.out.println(sArray[1]);
-                        System.out.println(sArray[2]);
-
-
-                        if (userNameInput.equals(sArray[0]) && passwordInput.equals(sArray[1])) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Welcome back " + sArray[0] , "Success",
-                                    JOptionPane.INFORMATION_MESSAGE);
-                            switch (sArray[2]) {
-                                case "Manager" -> new BaseManagerDashboard();
-                                case "Trainer" -> new BaseTrainerDashboard();
-                                case "Customer" -> new BaseFrame();
-                            }
-                            foundPassword = true;
+                    if (strInputUserName.equals(arUserLine[0]) && strInputPassword.equals(arUserLine[1])) {
+                        JOptionPane.showMessageDialog(null,
+                                "Welcome back " + arUserLine[0] , "Login Successful",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        switch (arUserLine[2]) {
+                            case "Manager" -> new BaseManagerDashboard();
+                            case "Trainer" -> new BaseTrainerDashboard();
+                            case "Customer" -> new BaseFrame();
                         }
+                        LoginPage.this.dispose();
+                        foundPassword = true;
+                        break;
                     }
-                }else {
+                }
+                if (!foundPassword){
                     JOptionPane.showMessageDialog(null,
-                            "Invalid Username / Password Combo", "Error",
+                            "Incorrect Username / Password", "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
 
-                in.close();
+                scUserRecords.close();
 
             } catch (FileNotFoundException e) {
                 JOptionPane.showMessageDialog(null,

@@ -16,7 +16,7 @@ import java.security.cert.TrustAnchor;
 
 public class Main {
     public static void main(String[] args){
-        new BaseManagerDashboard();
+        new LoginPage();
 
 
 //        LoginPage theView = new LoginPage();

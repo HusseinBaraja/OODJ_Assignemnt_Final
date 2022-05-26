@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92f0ea3d-d643-4f7d-a4de-28e53b1d5033" name="Changes" comment="Finished implementing setting different panels on the same frame BaseManagerDashboard">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/LoginControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataBase/LoginRecord" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/LoginModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/RegisterModel.java" afterDir="false" />
+    <list default="true" id="92f0ea3d-d643-4f7d-a4de-28e53b1d5033" name="Changes" comment="Work on login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BasePasswordField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseComponents/BasePasswordField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataBase/LoginRecord" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BasePasswordField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BasePasswordField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerRegistration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/LoginPage.java" afterDir="false" />
     </list>
@@ -43,7 +39,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Controller/LoginControl.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/DataBase/LoginRecord" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Model/RegisterModel.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/UI/BaseComponents/BaseLabel.java" root0="FORCE_HIGHLIGHTING" />
@@ -111,7 +106,7 @@
       <workItem from="1653449730047" duration="184000" />
       <workItem from="1653455393388" duration="7030000" />
       <workItem from="1653466215161" duration="12354000" />
-      <workItem from="1653541472081" duration="6192000" />
+      <workItem from="1653541472081" duration="25181000" />
     </task>
     <task id="LOCAL-00001" summary="added comboBox">
       <created>1652220789668</created>
@@ -162,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652317155726</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Work on login">
+      <created>1653572140134</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653572140134</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +186,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="Tidying up the code, it's now more understandable and easy to follow.&#10;PnlManagerBookSession is now complete." />
     <MESSAGE value="Finished implementing setting different panels on the same frame BaseManagerDashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing setting different panels on the same frame BaseManagerDashboard" />
+    <MESSAGE value="Work on login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work on login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

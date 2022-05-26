@@ -10,7 +10,7 @@ public class BasePasswordField extends JPasswordField {
 
         setPreferredSize(new Dimension(width, height)); //Changing the size of the password field.
 
-        setEchoChar('*');
+//        setEchoChar('*');
 
         setBorder(BorderFactory.createEmptyBorder()); //(pre-set template)
         setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white)); //(pre-set template)

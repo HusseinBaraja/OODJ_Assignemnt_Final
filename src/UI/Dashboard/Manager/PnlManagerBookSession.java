@@ -2,10 +2,22 @@ package UI.Dashboard.Manager;
 
 import UI.BaseComponents.*;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class PnlManagerBookSession extends BasePanel {
+    private BaseTextField txtCustomerUN;
+    private BaseTextField txtTrainerUN;
+    private BaseComboBox cmbExerciseType;
+    private BaseTextField txtDate;
+    private BaseComboBox cmbDuration;
+    private BaseComboBox cmbPrice;
     public PnlManagerBookSession(boolean opaque) {
         super(opaque);
         setLayout(new GridBagLayout());
@@ -25,7 +37,7 @@ public class PnlManagerBookSession extends BasePanel {
 
 
         //Creating the text field for the Username.
-        BaseTextField txtCustomerUN = new BaseTextField(24, 400,50);
+        txtCustomerUN = new BaseTextField(24, 400,50);
 
 
 
@@ -35,7 +47,7 @@ public class PnlManagerBookSession extends BasePanel {
         pnlTrainerUN.add(lblTrainerUN);
 
 
-        BaseTextField txtTrainerUN = new BaseTextField(24, 400,50);
+        txtTrainerUN = new BaseTextField(24, 400,50);
 
 
 
@@ -47,7 +59,7 @@ public class PnlManagerBookSession extends BasePanel {
 
 
         String[] strExercises = { "Weightlifting", "Resistance band", "Bicep curls", "Bicep curls", "Pull-ups","Dips" };
-        BaseComboBox cmbExerciseType = new BaseComboBox(strExercises, 400, 50);
+        cmbExerciseType = new BaseComboBox(strExercises, 400, 50);
 
 
         BasePanel pnlDate = new BasePanel(false);
@@ -56,7 +68,7 @@ public class PnlManagerBookSession extends BasePanel {
         pnlDate.add(lblDate);
 
 
-        BaseTextField txtDate = new BaseTextField("DD/MM/YYYY",24, 400,50);
+        txtDate = new BaseTextField("DD/MM/YYYY",24, 400,50);
 
 
         BasePanel pnlDuration = new BasePanel(false);
@@ -67,7 +79,7 @@ public class PnlManagerBookSession extends BasePanel {
 
 
         String[] strDuration = { "8am - 9am", "9am - 10am", "10am - 11am", "11am - 12pm", "2pm - 3pm","3pm - 4pm" };
-        BaseComboBox cmbDuration = new BaseComboBox(strDuration, 400, 50);
+        cmbDuration = new BaseComboBox(strDuration, 400, 50);
 
 
 
@@ -78,7 +90,7 @@ public class PnlManagerBookSession extends BasePanel {
 
 
         String[] PriceOptions = {"100 RM","250 RM", "500 RM"};
-        BaseComboBox cmbPrice = new BaseComboBox(PriceOptions, 200, 50);
+        cmbPrice = new BaseComboBox(PriceOptions, 200, 50);
 
 
 
@@ -149,7 +161,119 @@ public class PnlManagerBookSession extends BasePanel {
         GBCBookSession.gridy = 8;
         GBCBookSession.gridwidth = 2;
         this.add(pnlBook, GBCBookSession);
+
+
+        btnBook.addActionListener(new PnlManagerBookSession.BookSession());
+    }
+    public BaseTextField getTxtCustomerUN(){
+        return txtCustomerUN;
     }
 
+    public BaseTextField getTxtTrainerUN(){
+        return txtTrainerUN;
+    }
+
+    public BaseComboBox getCmbExerciseType() {
+        return cmbExerciseType;
+    }
+
+    public BaseTextField getTxtDate() {
+        return txtDate;
+    }
+
+    public BaseComboBox getCmbDuration() {
+        return cmbDuration;
+    }
+
+    public BaseComboBox getCmbPrice() {
+        return cmbPrice;
+    }
+
+
+
+
+
+    public class BookSession implements ActionListener {
+        boolean customerExist = false;
+        boolean trainerExist = false;
+        public void actionPerformed(ActionEvent event) {
+            ArrayList<String> arrBookedSession = new ArrayList<>();
+            arrBookedSession.add(getTxtCustomerUN().getText());
+            arrBookedSession.add(getTxtTrainerUN().getText());
+            arrBookedSession.add(String.valueOf(getCmbExerciseType().getSelectedItem()));
+            arrBookedSession.add(getTxtDate().getText());
+            arrBookedSession.add(String.valueOf(getCmbDuration().getSelectedItem()));
+            arrBookedSession.add(String.valueOf(getCmbPrice().getSelectedItem()));
+
+
+            try {
+                Scanner scCustomerInfo = new Scanner(new File("src/DataBase/UserInfo.txt"));
+                while (scCustomerInfo.hasNextLine()) {
+                    String strThisLine = scCustomerInfo.nextLine();
+                    String[] arUserLine = strThisLine.split(",");
+
+                    if (arrBookedSession.get(0).equals(arUserLine[0]) && arUserLine[5].equals("Customer")) {
+                        customerExist = true;
+                        break;
+                    } else {
+                        customerExist = false;
+                    }
+                }
+                scCustomerInfo.close();
+                Scanner scTrainerInfo = new Scanner(new File("src/DataBase/UserInfo.txt"));
+                while (scTrainerInfo.hasNextLine()) {
+                    String strThisLine = scTrainerInfo.nextLine();
+                    String[] arUserLine = strThisLine.split(",");
+
+                    if (arrBookedSession.get(1).equals(arUserLine[0]) && arUserLine[5].equals("Trainer")) {
+                        trainerExist = true;
+                        break;
+                    } else {
+                        trainerExist = false;
+                    }
+                }
+                scTrainerInfo.close();
+
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null,
+                        "There is no database to fetch the data from!", "Error",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+
+
+            if (arrBookedSession.get(0).equals("") || arrBookedSession.get(1).equals("") || arrBookedSession.get(3).equals("")){
+                JOptionPane.showMessageDialog(null,
+                        "Please fill in all the text fields!", "Error",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else if (!customerExist) {
+                JOptionPane.showMessageDialog(null,
+                        "This customer doesn't exists!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }else if (!trainerExist) {
+                JOptionPane.showMessageDialog(null,
+                        "This trainer doesn't exists!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    BufferedWriter bwUserInfo = new BufferedWriter(
+                            new FileWriter("src/DataBase/BookedSessions.txt", true));
+                    int i;
+                    for(i = 0; i < arrBookedSession.size() - 1; i++ ){
+                        bwUserInfo.write(arrBookedSession.get(i) + ",");
+                    }
+                    bwUserInfo.write(arrBookedSession.get(i));
+                    bwUserInfo.newLine();
+                    bwUserInfo.close();
+
+                    JOptionPane.showMessageDialog(null,
+                            "This session has been booked", "Update",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
 }
 

@@ -8,8 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class LoginPage extends BaseFrame {
@@ -180,9 +181,9 @@ public class LoginPage extends BaseFrame {
             foundPassword = false;
 
             try {
-                Scanner scUserRecords = new Scanner(new File("src/DataBase/LoginRecord.txt"));
-                while (scUserRecords.hasNextLine()) {
-                    String strThisLine = scUserRecords.nextLine();
+                Scanner scLoginInfo = new Scanner(new File("src/DataBase/LoginInfo.txt"));
+                while (scLoginInfo.hasNextLine()) {
+                    String strThisLine = scLoginInfo.nextLine();
                     String[] arUserLine = strThisLine.split(",");
 
                     if (strInputUserName.equals(arUserLine[0]) && strInputPassword.equals(arUserLine[1])) {
@@ -194,6 +195,23 @@ public class LoginPage extends BaseFrame {
                             case "Trainer" -> new BaseTrainerDashboard();
                             case "Customer" -> new BaseFrame();
                         }
+                        try {
+                            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                            LocalDateTime now = LocalDateTime.now();
+
+                            BufferedWriter bwLoginRecords = new BufferedWriter(
+                                    new FileWriter("src/DataBase/LoginRecords.txt", true));
+                            bwLoginRecords.write(arUserLine[0] + "," +
+                                                     arUserLine[2] + "," +
+                                                     dtf.format(now));
+                            bwLoginRecords.newLine();
+                            bwLoginRecords.close();
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
                         LoginPage.this.dispose();
                         foundPassword = true;
                         break;
@@ -205,7 +223,7 @@ public class LoginPage extends BaseFrame {
                             JOptionPane.ERROR_MESSAGE);
                 }
 
-                scUserRecords.close();
+                scLoginInfo.close();
 
             } catch (FileNotFoundException e) {
                 JOptionPane.showMessageDialog(null,

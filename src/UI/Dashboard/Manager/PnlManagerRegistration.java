@@ -1,9 +1,6 @@
 package UI.Dashboard.Manager;
 
 import UI.BaseComponents.*;
-import UI.BaseFrame;
-import UI.Dashboard.Trainer.BaseTrainerDashboard;
-import UI.LoginPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,13 +12,13 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class PnlManagerRegistration extends BasePanel {
-    private BaseTextField txtUN;
-    private BaseTextField txtName;
-    private BaseTextField txtEmail;
-    private BasePasswordField txtPassword;
-    private BaseTextField txtMobileNo;
-    private BaseComboBox cmbRole;
-    private BaseCheckBox cbShowPassword;
+    private final BaseTextField txtUN;
+    private final BaseTextField txtName;
+    private final BaseTextField txtEmail;
+    private final BasePasswordField txtPassword;
+    private final BaseTextField txtMobileNo;
+    private final BaseComboBox cmbRole;
+    private final BaseCheckBox cbShowPassword;
     public PnlManagerRegistration(boolean opaque) {
         super(opaque);
         setLayout(new GridBagLayout());
@@ -118,17 +115,7 @@ public class PnlManagerRegistration extends BasePanel {
         BaseButton btnRegister = new BaseButton("Register", 200, 40);
         pnlRegister.add(btnRegister);
 
-        /* How to add change listener
-        btnRegister.addChangeListener(new ChangeListener()
-        {
-            public void stateChanged(ChangeEvent e) {
-                ButtonModel model = btnRegister.getModel();
 
-                if (model.isPressed()) { btnRegister.setForeground(Color.gray); }
-                else { btnRegister.setForeground(Color.white); }
-            }
-        });
-        */
 
         Component[] loginLabels = new Component[6];
         loginLabels[0] = pnlUN;
@@ -219,13 +206,6 @@ public class PnlManagerRegistration extends BasePanel {
             arrUserInfo.add(String.valueOf(getCmbRole().getSelectedItem()));
 
 
-//            String strInputUN = getTxtUN().getText();
-//            String strInputName = getTxtName().getText();
-//            String strInputEmail = getTxtEmail().getText();
-//            String strInputPassword = String.valueOf(getTxtPassword().getPassword());
-//            String strInputRole = getTxtMobileNo().getText();
-//            String strRole = String.valueOf(getCmbRole().getSelectedItem());
-
             try {
                 Scanner scUserInfo = new Scanner(new File("src/DataBase/UserInfo.txt"));
                 while (scUserInfo.hasNextLine()) {
@@ -235,32 +215,45 @@ public class PnlManagerRegistration extends BasePanel {
                     if (arrUserInfo.get(0).equals(arUserLine[0])) {
                         userExist = true;
                         break;
+                    } else {
+                        userExist = false;
                     }
                 }
                 scUserInfo.close();
 
             } catch (FileNotFoundException e) {
-                JOptionPane.showMessageDialog(null,
-                        "Database does not exist", "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                try {
+                    new BufferedWriter(new FileWriter("src/DataBase/UserInfo.txt", true));
+                } catch (IOException ex) {
+                    e.printStackTrace();
+                }
             }
-            ArrayList<String> errorList = new ArrayList<>();
 
+
+            ArrayList<String> errorList = new ArrayList<>();
 
             if (arrUserInfo.get(0).equals("") || arrUserInfo.get(1).equals("") || arrUserInfo.get(2).equals("") ||
                 arrUserInfo.get(3).equals("") || arrUserInfo.get(4).equals("")){
                 JOptionPane.showMessageDialog(null,
                         "Please fill in all the text fields!", "Error",
                         JOptionPane.INFORMATION_MESSAGE);
-            } else if (!userExist) {
+            } else if (userExist) {
                 JOptionPane.showMessageDialog(null,
                         "This user already exists!", "Error",
                         JOptionPane.ERROR_MESSAGE);
-            } else if (!(Pattern.matches("^[a-zA-Z]+$", getTxtName().getText()))) {
+            } else if (!(arrUserInfo.get(1).matches("^[ A-Za-z]+$"))) {
                 JOptionPane.showMessageDialog(null,
-                        "Name should only contain alphabet characters", "Error",
+                        "Name should only contain alphabet characters!", "Error",
                         JOptionPane.ERROR_MESSAGE);
-            } else if (!isValid(arrUserInfo.get(3), errorList)){
+            } else if (!arrUserInfo.get(2).contains("@") || !arrUserInfo.get(2).contains(".")) {
+                JOptionPane.showMessageDialog(null,
+                        "Please enter a valid email address!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else if (!arrUserInfo.get(4).matches("^\\d{10}$")) {
+                JOptionPane.showMessageDialog(null,
+                        "Please enter a valid Mobile number made of 10 numeric characters!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else if (!isPassValid(arrUserInfo.get(3), errorList)){
                 String strPasswordErrors = "";
                 for (String error : errorList) {
                     strPasswordErrors += error +"\n";
@@ -270,54 +263,66 @@ public class PnlManagerRegistration extends BasePanel {
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 try {
-                    BufferedWriter bw = new BufferedWriter(new FileWriter("src/DataBase/UserInfo.txt", true));
+                    BufferedWriter bwUserInfo = new BufferedWriter(
+                            new FileWriter("src/DataBase/UserInfo.txt", true));
                     int i;
                     for(i = 0; i < arrUserInfo.size() - 1; i++ ){
-                        bw.write(arrUserInfo.get(i) + ",");
+                        bwUserInfo.write(arrUserInfo.get(i) + ",");
                     }
-                    bw.write(arrUserInfo.get(i));
-                    bw.newLine();
-                    bw.close();
+                    bwUserInfo.write(arrUserInfo.get(i));
+                    bwUserInfo.newLine();
+                    bwUserInfo.close();
 
+
+                    //writing to the login record to be able to log in later
+                    BufferedWriter bwLoginInfo = new BufferedWriter(
+                            new FileWriter("src/DataBase/LoginInfo.txt", true));
+                    bwLoginInfo.write(arrUserInfo.get(0) + "," +
+                                            arrUserInfo.get(3) + "," +
+                                            arrUserInfo.get(5));
+                    bwLoginInfo.newLine();
+                    bwLoginInfo.close();
+
+                    JOptionPane.showMessageDialog(null,
+                            "User has been registered!", "Update",
+                            JOptionPane.INFORMATION_MESSAGE);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
 
         }
-    }
-    public static boolean isValid(String strUserPassword, ArrayList<String> errorList) {
+        public boolean isPassValid(String strUserPassword, ArrayList<String> errorList) {
 
-        Pattern patSpecialChar = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-        Pattern ptnUpperCase = Pattern.compile("[A-Z ]");
-        Pattern ptnLowerCase = Pattern.compile("[a-z ]");
-        Pattern ptnDigitCase = Pattern.compile("[0-9 ]");
-        errorList.clear();
+            Pattern patSpecialChar = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Pattern ptnUpperCase = Pattern.compile("[A-Z ]");
+            Pattern ptnLowerCase = Pattern.compile("[a-z ]");
+            Pattern ptnDigitCase = Pattern.compile("[0-9 ]");
+            errorList.clear();
 
-        boolean flag=true;
+            boolean passValid=true;
 
-        if (strUserPassword.length() < 8) {
-            errorList.add("Password length must be at least 8 characters long!");
-            flag=false;
+            if (strUserPassword.length() < 8) {
+                errorList.add("Password length must be at least 8 characters long!");
+                passValid=false;
+            }
+            if (!patSpecialChar.matcher(strUserPassword).find()) {
+                errorList.add("Password must contain at least one special character!");
+                passValid=false;
+            }
+            if (!ptnUpperCase.matcher(strUserPassword).find()) {
+                errorList.add("Password must contain at least one uppercase character!");
+                passValid=false;
+            }
+            if (!ptnLowerCase.matcher(strUserPassword).find()) {
+                errorList.add("Password must contain at least one lowercase character!");
+                passValid=false;
+            }
+            if (!ptnDigitCase.matcher(strUserPassword).find()) {
+                errorList.add("Password must contain at least one digit character!");
+                passValid=false;
+            }
+            return passValid;
         }
-        if (!patSpecialChar.matcher(strUserPassword).find()) {
-            errorList.add("Password must contain at least one special character!");
-            flag=false;
-        }
-        if (!ptnUpperCase.matcher(strUserPassword).find()) {
-            errorList.add("Password must contain at least one uppercase character!");
-            flag=false;
-        }
-        if (!ptnLowerCase.matcher(strUserPassword).find()) {
-            errorList.add("Password must contain at least one lowercase character!");
-            flag=false;
-        }
-        if (!ptnDigitCase.matcher(strUserPassword).find()) {
-            errorList.add("Password must contain at least one digit character!");
-            flag=false;
-        }
-
-        return flag;
-
     }
 }

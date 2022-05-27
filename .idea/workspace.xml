@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92f0ea3d-d643-4f7d-a4de-28e53b1d5033" name="Changes" comment="Finished backend">
+    <list default="true" id="92f0ea3d-d643-4f7d-a4de-28e53b1d5033" name="Changes" comment="Finished everything in the manager part">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseComponents/BaseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseComponents/BaseButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/BaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/BaseDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/BaseDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/LoginPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +109,7 @@
       <workItem from="1653455393388" duration="7030000" />
       <workItem from="1653466215161" duration="12354000" />
       <workItem from="1653541472081" duration="41760000" />
-      <workItem from="1653644124530" duration="1333000" />
+      <workItem from="1653644124530" duration="9106000" />
     </task>
     <task id="LOCAL-00001" summary="added comboBox">
       <created>1652220789668</created>
@@ -172,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653641552902</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Finished everything in the manager part">
+      <created>1653645518130</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653645518130</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +213,8 @@
     <MESSAGE value="Work on login" />
     <MESSAGE value="finished login and almost finished register" />
     <MESSAGE value="Finished backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished backend" />
+    <MESSAGE value="Finished everything in the manager part" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished everything in the manager part" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

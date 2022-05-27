@@ -88,6 +88,7 @@ public class PnlManagerRegistration extends BasePanel {
 
         String[] strRole = {"Manager", "Trainer", "Customer"};
         cmbRole = new BaseComboBox(strRole, 20, 200, 40);
+        cmbRole.setEditable(false);
 
 
         cbShowPassword = new BaseCheckBox("Show Password");
@@ -174,22 +175,22 @@ public class PnlManagerRegistration extends BasePanel {
 
         btnRegister.addActionListener(new PnlManagerRegistration.RegisterUser());
     }
-    public BaseTextField getTxtUN(){
+    protected BaseTextField getTxtUN(){
         return txtUN;
     }
-    public BaseTextField getTxtName(){
+    protected BaseTextField getTxtName(){
         return txtName;
     }
-    public BaseTextField getTxtEmail(){
+    protected BaseTextField getTxtEmail(){
         return txtEmail;
     }
-    public BasePasswordField getTxtPassword(){
+    protected BasePasswordField getTxtPassword(){
         return txtPassword;
     }
-    public BaseTextField getTxtMobileNo(){
+    protected BaseTextField getTxtMobileNo(){
         return txtMobileNo;
     }
-    public BaseComboBox getCmbRole(){
+    protected BaseComboBox getCmbRole(){
         return cmbRole;
     }
 

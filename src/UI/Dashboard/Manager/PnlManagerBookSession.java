@@ -12,12 +12,12 @@ import java.util.Scanner;
 
 
 public class PnlManagerBookSession extends BasePanel {
-    private BaseTextField txtCustomerUN;
-    private BaseTextField txtTrainerUN;
-    private BaseComboBox cmbExerciseType;
-    private BaseTextField txtDate;
-    private BaseComboBox cmbDuration;
-    private BaseComboBox cmbPrice;
+    private final BaseTextField txtCustomerUN;
+    private final BaseTextField txtTrainerUN;
+    private final BaseComboBox cmbExerciseType;
+    private final BaseTextField txtDate;
+    private final BaseComboBox cmbDuration;
+    private final BaseComboBox cmbPrice;
     public PnlManagerBookSession(boolean opaque) {
         super(opaque);
         setLayout(new GridBagLayout());
@@ -60,7 +60,7 @@ public class PnlManagerBookSession extends BasePanel {
 
         String[] strExercises = { "Weightlifting", "Resistance band", "Bicep curls", "Bicep curls", "Pull-ups","Dips" };
         cmbExerciseType = new BaseComboBox(strExercises, 400, 50);
-
+        cmbExerciseType.setEditable(false);
 
         BasePanel pnlDate = new BasePanel(false);
         pnlDate.setLayout(new FlowLayout(FlowLayout.TRAILING));
@@ -80,7 +80,7 @@ public class PnlManagerBookSession extends BasePanel {
 
         String[] strDuration = { "8am - 9am", "9am - 10am", "10am - 11am", "11am - 12pm", "2pm - 3pm","3pm - 4pm" };
         cmbDuration = new BaseComboBox(strDuration, 400, 50);
-
+        cmbDuration.setEditable(false);
 
 
         BasePanel pnlPrice = new BasePanel(false);
@@ -91,7 +91,7 @@ public class PnlManagerBookSession extends BasePanel {
 
         String[] PriceOptions = {"100 RM","250 RM", "500 RM"};
         cmbPrice = new BaseComboBox(PriceOptions, 200, 50);
-
+        cmbPrice.setEditable(false);
 
 
 
@@ -101,17 +101,6 @@ public class PnlManagerBookSession extends BasePanel {
         BaseButton btnBook = new BaseButton("Book", 200, 40);
         pnlBook.add(btnBook);
 
-        /* How to add change listener
-        btnBook.addChangeListener(new ChangeListener()
-        {
-            public void stateChanged(ChangeEvent e) {
-                ButtonModel model = btnBook.getModel();
-
-                if (model.isPressed()) { btnBook.setForeground(Color.gray); }
-                else { btnBook.setForeground(Color.white); }
-            }
-        });
-        */
 
         Component[] loginLabels = new Component[6];
         loginLabels[0] = pnlCustomerUN;
@@ -165,27 +154,27 @@ public class PnlManagerBookSession extends BasePanel {
 
         btnBook.addActionListener(new PnlManagerBookSession.BookSession());
     }
-    public BaseTextField getTxtCustomerUN(){
+    protected BaseTextField getTxtCustomerUN(){
         return txtCustomerUN;
     }
 
-    public BaseTextField getTxtTrainerUN(){
+    protected BaseTextField getTxtTrainerUN(){
         return txtTrainerUN;
     }
 
-    public BaseComboBox getCmbExerciseType() {
+    protected BaseComboBox getCmbExerciseType() {
         return cmbExerciseType;
     }
 
-    public BaseTextField getTxtDate() {
+    protected BaseTextField getTxtDate() {
         return txtDate;
     }
 
-    public BaseComboBox getCmbDuration() {
+    protected BaseComboBox getCmbDuration() {
         return cmbDuration;
     }
 
-    public BaseComboBox getCmbPrice() {
+    protected BaseComboBox getCmbPrice() {
         return cmbPrice;
     }
 
@@ -249,7 +238,7 @@ public class PnlManagerBookSession extends BasePanel {
                 JOptionPane.showMessageDialog(null,
                         "This customer doesn't exists!", "Error",
                         JOptionPane.ERROR_MESSAGE);
-            }else if (!trainerExist) {
+            } else if (!trainerExist) {
                 JOptionPane.showMessageDialog(null,
                         "This trainer doesn't exists!", "Error",
                         JOptionPane.ERROR_MESSAGE);

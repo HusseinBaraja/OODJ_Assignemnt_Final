@@ -3,24 +3,18 @@ package UI.Dashboard.Manager;
 import UI.BaseComponents.BaseLabel;
 import UI.BaseComponents.BasePanel;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class PnlManagerDashboard extends BasePanel {
     public PnlManagerDashboard(boolean opaque) {
         super(opaque);
-        setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
 
-        BaseLabel label = new BaseLabel("hi");
+        BaseLabel label = new BaseLabel("Welcome back to the manger interface", 40, "Algerian" );
+        label.setHorizontalAlignment(JLabel.CENTER);
+        add(label, BorderLayout.CENTER);
 
-        GridBagConstraints GBCLogin = new GridBagConstraints();
-        GBCLogin.weightx = 1;
-        GBCLogin.weighty = 1;
-        GBCLogin.fill= GridBagConstraints.HORIZONTAL;
 
-        GBCLogin.gridx = 0;
-        GBCLogin.gridy = 0;
-        GBCLogin.gridwidth = 2;
-
-        this.add(label,GBCLogin);
     }
 }

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BaseButton extends JButton implements MouseListener, ActionListener {
+public class BaseButton extends JButton implements MouseListener{
     private String baseFileName;
     private String lightFileName;
     private String darkFileName;
@@ -75,17 +75,6 @@ public class BaseButton extends JButton implements MouseListener, ActionListener
         return frameName;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this) {
-            //enhanced switch statement
-            switch (getFrameName()) {
-                case "Login" -> new BaseManagerDashboard();
-                case "Trainer" -> new BaseTrainerDashboard();
-                case "frame" -> new BaseFrame();
-            }
-        }
-    }
 
 
     public void setImageOnEvent(String baseFileName, String lightFileName, String darkFileName){

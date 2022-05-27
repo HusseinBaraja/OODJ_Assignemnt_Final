@@ -89,7 +89,7 @@ public class LoginPage extends BaseFrame {
         BaseLabel lblUserName = new BaseLabel("Username");
 
         //Creating the text field for the Username.
-        txtUserName = new BaseTextField("Enter your Username here", 750,50);
+        txtUserName = new BaseTextField("", 750,50);
 
         pnlUserName.add(lblUserName);
         pnlUserName.add(txtUserName);
@@ -162,17 +162,15 @@ public class LoginPage extends BaseFrame {
         btnSignIn.addActionListener(new LoginListener());
 
     }
-    public JPanel getPnlLogin(){
+    protected JPanel getPnlLogin(){
         return pnlLogin;
     }
-
-    public BaseTextField getTxtUserName(){
+    protected BaseTextField getTxtUserName(){
         return txtUserName;
     }
-    public BasePasswordField getTxtPassword(){
+    protected BasePasswordField getTxtPassword(){
         return txtPassword;
     }
-
     public class LoginListener implements ActionListener {
         boolean foundPassword;
         public void actionPerformed(ActionEvent event) {
@@ -193,7 +191,9 @@ public class LoginPage extends BaseFrame {
                         switch (arUserLine[2]) {
                             case "Manager" -> new BaseManagerDashboard();
                             case "Trainer" -> new BaseTrainerDashboard();
-                            case "Customer" -> new BaseFrame();
+                            case "Customer" -> JOptionPane.showMessageDialog(null,
+                                    "The customer part is not implemented in this assignment", "Error",
+                                    JOptionPane.ERROR_MESSAGE);
                         }
                         try {
                             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

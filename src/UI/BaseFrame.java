@@ -17,13 +17,11 @@ import java.awt.*;
  * <p>
  * The <code>pnlRightSide</code> is inside the center border of the <code>BaseFrame</code> and it doesn't contain any components but is
  * just initialized to be overridden and get more components from other classes.
- * The <code>pnlLeftSide</code> contains the <code>pnlLogout</code>, this is because <code>pnlLogout</code> is present in all the frames
- * across the program.
  *
  * @author Hussein Abdullah Mohammed Ba Ragaa
  * @since 1.0
  */
-public class BaseFrame extends JFrame{
+public abstract class BaseFrame extends JFrame{
     /**
      * <code>pnlLeftSide</code> is an instance of the BasePanel class, it is a panel that will contain all the components
      * that will be on the sidebar of the program.
@@ -34,11 +32,6 @@ public class BaseFrame extends JFrame{
      * <code>pnlRightSide</code> will contain the components that will be on the main part of the program
      */
     private BasePanel pnlRightSide;
-
-    /**
-     * <code>pnlLogout</code> has the Logout button that is located at the bottom of <code>pnlLeftSide</code>
-     */
-    private BasePanel pnlLogout;
 
 
     /**
@@ -56,16 +49,16 @@ public class BaseFrame extends JFrame{
      * @see BasePanel
      */
     public BaseFrame(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1280,720);
-        this.setResizable(true);
-        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1280,720);
+        setResizable(true);
+        setLocationRelativeTo(null);
 
-        this.setIconImage(new ImageIcon("src/Resources/Logo.png").getImage());
+        setIconImage(new ImageIcon("src/Resources/Logo.png").getImage());
 
         setPnlLeftSide();
         setPnlRightSide();
-        this.setVisible(true);
+        setVisible(true);
     }
 
 
@@ -78,10 +71,6 @@ public class BaseFrame extends JFrame{
      * top (<code>BorderLayout.CENTER</code>) and bottom (<code>BorderLayout.SOUTH</code>). There is a white
      * border to the right side of <code>pnlLeftSide</code> to act as a divider between the two sides of the
      * frame.
-     * <p>
-     * The <code>setPnlLogout()</code> is called to initialize the Logout panel, and it gets added to the
-     * bottom part of <code>pnlLeftSide</code>.
-     * <p>
      * In the end, <code>getPnlLeftSide()</code> is added to the left side of the frame.
      *
      * @see BasePanel
@@ -90,9 +79,6 @@ public class BaseFrame extends JFrame{
         pnlLeftSide = new BasePanel(0x1E2022,290,720);
         pnlLeftSide.setLayout(new BorderLayout());
         pnlLeftSide.setBorder(BorderFactory.createMatteBorder(0,0,0,1,new Color(0xFFFFFF)));
-
-        setPnlLogout();
-        this.getPnlLeftSide().add(getPnlLogout(), BorderLayout.SOUTH);
 
         this.add(getPnlLeftSide(), BorderLayout.WEST);
     }
@@ -105,54 +91,6 @@ public class BaseFrame extends JFrame{
         return pnlLeftSide;
     }
 
-
-    /**
-     * <code>setPnlLogout()</code> is a panel container for the Logout button.
-     * <p>
-     * <code>pnlLogout</code> is initialized with a transparent background, a width of 280 px and a height
-     * of 100 px. It has left alignment using the {@link java.awt.BorderLayout} to make its components get
-     * painted from the left of the container.
-     * There is a top border to act as a divider between the top and bottom of the sidebar.
-     * <p>
-     * <code>btnLogout</code> is created with the Logout.png image added to it. It has a left horizontal
-     * alignment and has 3 copies of the Logout image with different colors to be changed when the button is
-     * interacted with.
-     * <p>
-     * <code>btnLogout</code> is added to the bottom of <code>pnlLogout</code>
-     *
-     *
-     * @see BasePanel
-     * @see BaseButton
-     */
-    public void setPnlLogout(){
-        //Creating the Logout panel
-        pnlLogout = new BasePanel(false,280,100);
-        pnlLogout.setLayout(new FlowLayout(FlowLayout.LEADING));
-
-        //Creating a top white divider
-        pnlLogout.setBorder(BorderFactory.createMatteBorder(1,0,0,0,new Color(0xFFFFFF)));
-
-
-        //Creating the Logout button:
-        BaseButton btnLogout = new BaseButton("Logout", 20, 280, 40);
-        btnLogout.setImage("src/Resources/Logout/logout.png");
-        btnLogout.setHorizontalAlignment(JButton.LEFT); //aligning the content of the label to the left.
-
-        btnLogout.setImageOnEvent("src/Resources/Logout/logout.png",
-                                    "src/Resources/Logout/lightLogout.png",
-                                    "src/Resources/Logout/darkLogout.png");
-
-        //Add button to the Logout panel which is in the bottom of the sidebar
-        pnlLogout.add(btnLogout);
-    }
-
-    /**
-     * <code>getPnlLogout()</code> is a getter for <code>pnlLogout</code> to prevent it from being accessed directly.
-     * @return <code>pnlLogout</code> which contains the Logout button.
-     */
-    public JPanel getPnlLogout(){
-        return pnlLogout;
-    }
 
 
     /**

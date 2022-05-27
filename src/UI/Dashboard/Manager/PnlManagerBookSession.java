@@ -257,6 +257,25 @@ public class PnlManagerBookSession extends BasePanel {
                 try {
                     BufferedWriter bwUserInfo = new BufferedWriter(
                             new FileWriter("src/DataBase/BookedSessions.txt", true));
+
+                    int iLastNumber = 1;
+                    try {
+                        Scanner scCustomerInfo = new Scanner(new File("src/DataBase/BookedSessions.txt"));
+                        while (scCustomerInfo.hasNextLine()) {
+                            String strThisLine = scCustomerInfo.nextLine();
+                            String[] arUserLine = strThisLine.split(",");
+
+                            iLastNumber = Integer.parseInt(arUserLine[0]) + 1;
+
+
+                        }
+                    } catch (FileNotFoundException e) {
+                        JOptionPane.showMessageDialog(null,
+                                "There is no database to fetch the data from!", "Error",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    bwUserInfo.write(String.valueOf(iLastNumber) + ",");
+
                     int i;
                     for(i = 0; i < arrBookedSession.size() - 1; i++ ){
                         bwUserInfo.write(arrBookedSession.get(i) + ",");

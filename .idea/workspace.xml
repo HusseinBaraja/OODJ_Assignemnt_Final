@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92f0ea3d-d643-4f7d-a4de-28e53b1d5033" name="Changes" comment="finished login and almost finished register">
+    <list default="true" id="92f0ea3d-d643-4f7d-a4de-28e53b1d5033" name="Changes" comment="Finished backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerBookSession.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/Dashboard/Manager/PnlManagerRegistration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/LoginPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LoginControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/LoginModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/RegisterModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OODJ_Assignemnt_Final/UI/BaseFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BaseFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerBookSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dashboard/Manager/PnlManagerRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/LoginPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,16 +51,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -106,7 +99,8 @@
       <workItem from="1653449730047" duration="184000" />
       <workItem from="1653455393388" duration="7030000" />
       <workItem from="1653466215161" duration="12354000" />
-      <workItem from="1653541472081" duration="39226000" />
+      <workItem from="1653541472081" duration="41760000" />
+      <workItem from="1653644124530" duration="1333000" />
     </task>
     <task id="LOCAL-00001" summary="added comboBox">
       <created>1652220789668</created>
@@ -171,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653604470371</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Finished backend">
+      <created>1653641552902</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653641552902</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +196,8 @@
     <MESSAGE value="Finished implementing setting different panels on the same frame BaseManagerDashboard" />
     <MESSAGE value="Work on login" />
     <MESSAGE value="finished login and almost finished register" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished login and almost finished register" />
+    <MESSAGE value="Finished backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished backend" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

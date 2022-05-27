@@ -1,6 +1,4 @@
 package UI;
-
-import UI.BaseComponents.BaseButton;
 import UI.BaseComponents.BasePanel;
 
 import javax.swing.*;
